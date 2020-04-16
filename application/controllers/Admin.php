@@ -48,12 +48,23 @@ class Admin extends CI_Controller
         $data['user'] = $this->m_auth->getUser($sess_username);
 
         $data['getuser'] = $this->m_user->getAllUser();
+        
+        //cek keyword di dalam kolom pencarian
+        if ( $this->input->post('keyword') ){
+            //jika ada keyword masuk ke dalam data keyword
+            $data['keyword'] = $this->input->post('keyword');
+            //masukan data keyword ke dalam session agar dapat diakses di setiap page di pagination
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = null;
+        }
+
         $data['getrole'] = $this->m_user->getAllRole();
         $data['alluser'] = $this->m_user->getAllUserAndRole();
-        
+
         // PAGINATION
         $config['base_url']     = 'http://localhost:8080/tubes-webpro/admin/user';
-        $config['total_rows']   = $this->m_user->countAllUser();
+        $config['total_rows']   = $this->m_user->totalRowsPagination($data['keyword']);
         $config['per_page']     = 5;
         $data['start']          = $this->uri->segment(3);
 
@@ -87,7 +98,7 @@ class Admin extends CI_Controller
         
         $this->pagination->initialize($config);
         
-        $data['userpagination'] = $this->m_user->getUserPagination($config['per_page'], $data['start']);
+        $data['userpagination'] = $this->m_user->getUserPagination($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_admin', $data);
