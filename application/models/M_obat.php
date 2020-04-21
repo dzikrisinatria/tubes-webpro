@@ -108,14 +108,12 @@ class M_obat extends CI_Model
             'kode_obat'          => $this->input->post('kode_obat'),
             'nama_obat'         => $this->input->post('nama_obat'),
             'harga'      => $this->input->post('harga'),
-            // 'password'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'stok' => $this->input->post('stok'),
             'bentuk'     => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
             'aturan'       => $this->input->post('aturan'),
             'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('jenis_obat'),
-            // 'date_created'  => time()
+            'id_jenis_obat'       => $this->input->post('jenis_obat')
         ];
     }
 
@@ -125,14 +123,12 @@ class M_obat extends CI_Model
             'kode_obat'          => $this->input->post('kode_obat'),
             'nama_obat'         => $this->input->post('nama_obat'),
             'harga'      => $this->input->post('harga'),
-            // 'password'      => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
             'stok' => $this->input->post('stok'),
             'bentuk'     => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
             'aturan'       => $this->input->post('aturan'),
             'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('jenis_obat'),
-            // 'date_created'  => time()
+            'id_jenis_obat'       => $this->input->post('jenis_obat')
         ];
     }
 
