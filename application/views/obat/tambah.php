@@ -7,20 +7,20 @@
 		
         <div class="col-md-7 mt-3">
 			<div class="form-group row">
-				<label for="email" class="col-sm-3 col-form-label">Kode Obat</label>
+				<label for="kode_obat" class="col-sm-3 col-form-label">Kode Obat</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="email" name="email" placeholder="Email"
-                    value="<?= set_value('email'); ?>">
-					<?= form_error('email', '<small class="form-text text-danger">', '</small>'); ?>
+					<input type="text" class="form-control" id="kode_obat" name="kode_obat" placeholder="Kode Obat"
+                    value="<?= set_value('kode_obat'); ?>">
+					<?= form_error('kode_obat', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="username" class="col-sm-3 col-form-label">Nama Obat</label>
+				<label for="nama_obat" class="col-sm-3 col-form-label">Nama Obat</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="username" name="username" placeholder="Username"
+					<input type="text" class="form-control" id="nama_obat" name="nama_obat" placeholder="Nama Obat"
                     value="<?= set_value('username'); ?>">
-					<?= form_error('username', '<small class="form-text text-danger">', '</small>'); ?>
+					<?= form_error('nama_obat', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
@@ -40,45 +40,45 @@
 			</div>
 			
 			<div class="form-group row">
-				<label for="nama" class="col-sm-3 col-form-label">Harga</label>
+				<label for="harga" class="col-sm-3 col-form-label">Harga</label>
 				<div class="col-sm-9">
-					<input type="text" class="form-control" id="nama" name="nama" value="<?= set_value('nama'); ?>">
-					<?= form_error('nama', '<small class="form-text text-danger">', '</small>'); ?>
+					<input type="text" class="form-control" id="harga" name="harga" value="<?= set_value('harga'); ?>">
+					<?= form_error('harga', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="tgl_lahir" class="col-sm-3 col-form-label">Stok</label>
+				<label for="stok" class="col-sm-3 col-form-label">Stok</label>
 				<div class="col-sm-9">
-					<input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir"
-                    value="<?= set_value('tgl_lahir'); ?>">
-					<?= form_error('tgl_lahir', '<small class="form-text text-danger">', '</small>'); ?>
+					<input type="number" class="form-control" id="stok" name="stok"
+                    value="<?= set_value('stok'); ?>">
+					<?= form_error('stok', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="alamat" class="col-sm-3 col-form-label">Fungsi</label>
+				<label for="fungsi" class="col-sm-3 col-form-label">Fungsi</label>
 				<div class="col-sm-9">
-					<textarea class="form-control" id="alamat" name="alamat" rows="2"><?= set_value('alamat'); ?></textarea>
-					<?= form_error('alamat', '<small class="form-text text-danger">', '</small>'); ?>
+					<textarea class="form-control" id="fungsi" name="fungsi" rows="2"><?= set_value('fungsi'); ?></textarea>
+					<?= form_error('fungsi', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="telepon" class="col-sm-3 col-form-label">Aturan</label>
+				<label for="aturan" class="col-sm-3 col-form-label">Aturan</label>
 				<div class="col-sm-9">
-					<input type="telepon" class="form-control" id="telepon" name="telepon"
-                    value="<?= set_value('telepon'); ?>">
-					<?= form_error('telepon', '<small class="form-text text-danger">', '</small>'); ?>
+					<input type="text" class="form-control" id="aturan" name="aturan"
+                    value="<?= set_value('aturan'); ?>">
+					<?= form_error('aturan', '<small class="form-text text-danger">', '</small>'); ?>
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<label for="foto" class="col-sm-3 col-form-label">Gambar Obat</label>
+				<label for="gambar" class="col-sm-3 col-form-label">Gambar Obat</label>
 				<div class="col-sm-9">
 					<div class="custom-file">
-						<input type="file" class="custom-file-input" id="foto" name="foto">
-						<label class="custom-file-label" for="foto">Pilih Foto</label>
+						<input type="file" class="custom-file-input" id="gambar" name="gambar">
+						<label class="custom-file-label" for="foto">Pilih Gambar</label>
 						<?= $this->session->flashdata('message'); //pesan error khusus upload ?>
 					</div>
 				</div>
