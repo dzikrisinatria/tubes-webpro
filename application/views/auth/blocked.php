@@ -40,7 +40,7 @@
 		<div class="error-heading">403</div>
         <h2>Access Forbidden!</h2>
 		<p>You do not have permission to access the document or program that you requested.</p>
-        <a href="<?= base_url('user'); ?>">&larr; Back to Dashboard</a>
+        <a type="button" onclick="window.history.go(-1); return false;">&larr; Go Back</a>
 	</div>
 </body>
 </html>

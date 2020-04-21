@@ -37,6 +37,15 @@
 					</tr>
 				</thead>
 				<tbody>
+                    <?php if ( empty($userpagination) ) :?>
+                        <tr>
+                            <td colspan="6">
+                                <div class="alert alert-danger" role="alert">
+                                    Data tidak ditemukan.
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
 					<?php foreach ($userpagination as $u ) :?>
 					<tr>
 						<form action="">
@@ -61,7 +70,7 @@
                             <td width="1">
                                 <a type="button" class="btn btn-danger ml-2"
                                     href="<?= base_url(); ?>admin/hapususer/<?= $u['id_user']?>"
-                                    onClick="return confirm('Apakah Anda Yakin?')">
+                                    onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
                                     <i class="fas fa-fw fa-user-times"></i>
                                     </<button>
 							</td>
@@ -84,20 +93,73 @@
 <div class="modal fade" id="detail<?= $u['id_user']; ?>" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header">
+			<!-- <div class="modal-header">
 				<h4>Detail User</h4>
-			</div>
-			<div class="modal-body">
+			</div> -->
+			<div class="modal-body my-auto">
+                <center>
+                <img class="rounded-circle mx-2 mb-3 mt-2 bg-light" height="100px" width="100px"
+                    src="<?= base_url('assets/img/profile/') . $u['foto']; ?>">
 				<h5><?= $u['nama'];?></h5>
 				<p><?= $u['role'];?></p>
-				<p><?= $u['email'];?></p>
-				<p><?= $u['username'];?></p>
-				<p><?= $u['jenis_kelamin'];?></p>
-				<p><?= $u['tgl_lahir'];?></p>
-				<p><?= $u['alamat'];?></p>
-				<p><?= $u['telepon'];?></p>
-				<p><?= $u['foto'];?></p>
-				<p>Terdaftar Sejak <?= date('d F Y', $u['date_created']);?></p>
+                </center>
+                <hr>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Email</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['email'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Username</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['username'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Jenis Kelamin</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['jenis_kelamin'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Tanggal Lahir</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['tgl_lahir'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Alamat</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['alamat'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Telepon</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $u['telepon'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Terdaftar Sejak</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= date('d F Y', $u['date_created']);?></p>
+                    </div>
+                </div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

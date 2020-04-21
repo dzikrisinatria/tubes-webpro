@@ -72,7 +72,7 @@
 					<?php else : ?>
 						<li class="nav-item">
 					<?php endif; ?>
-						<a class="nav-link" href="<?= base_url('admin'); ?>">
+						<a class="nav-link" href="<?= base_url('obat'); ?>">
 						<i class="fas fa-fw fa-pills mr-3"></i>Kelola Obat</a>
 					</li>
 					
@@ -81,7 +81,7 @@
 					<?php else : ?>
 						<li class="nav-item">
 					<?php endif; ?>
-						<a class="nav-link" href="<?= base_url('admin'); ?>">
+						<a class="nav-link" href="<?= base_url('admin/pemesanan'); ?>">
 						<i class="fas fa-fw fa-file-invoice mr-3"></i>Pemesanan</a>
 					</li>
 

@@ -117,7 +117,7 @@
             
 			<div class="form-group row justify-content-end">
 				<a type="button" href="<?= base_url('admin/user'); ?>" class="btn btn-secondary form-control mt-2 col-sm-2 mx-1">Batal</a>
-				<button type="submit" class="btn btn-success form-control mt-2 col-sm-2 mx-1">Register</button>
+				<button type="submit" class="btn btn-success form-control mt-2 col-sm-2 mx-1">Simpan</button>
 			</div>
 		</div>
 
