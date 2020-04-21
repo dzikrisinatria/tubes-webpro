@@ -57,26 +57,26 @@
 					<tr>
 						<form action="">
 							<td><?= ++$start ?></td>
-							<td><?= $o['username'] ?></td>
-							<td><?= $o['email']?></td>
-							<td><?= $o['nama']?></td>
-							<td><?= $o['role']?></td>
+							<td><?= $o['kode_obat'] ?></td>
+							<td><?= $o['nama_obat']?></td>
+							<td><?= $o['nama_jenis']?></td>
+							<td><?= $o['harga']?></td>
 
 							<td width="1">
 								<button type="button" class="btn btn-primary" data-toggle="modal"
-									data-target="#detail<?= $o['id_user']?>">
+									data-target="#detail<?= $o['id_obat']?>">
 									<i class="fas fa-fw fa-info"></i>
 								</button>
                             </td>
                             <td width="1">
 								<a type="button" class="btn btn-warning ml-1"
-									href="<?= base_url(); ?>obat/editobat/<?= $o['id_user']?>">
+									href="<?= base_url(); ?>obat/editobat/<?= $o['id_obat']?>">
 									<i class="fas fa-fw fa-edit"></i>
 									</<button>
                             </td>
                             <td width="1">
                                 <a type="button" class="btn btn-danger ml-2"
-                                    href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_user']?>"
+                                    href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_obat']?>"
                                     onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
                                     <i class="fas fa-fw fa-trash-alt"></i>
                                     </<button>
@@ -95,9 +95,9 @@
 
 </div>
 
-<!-- MODAL FORM DETAIL USER -->
+<!-- MODAL FORM DETAIL OBAT -->
 <?php $no=1; foreach ($allobat as $o ) :?>
-<div class="modal fade" id="detail<?= $o['id_user']; ?>" tabindex="-1" role="dialog">
+<div class="modal fade" id="detail<?= $o['id_obat']; ?>" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<!-- <div class="modal-header">
