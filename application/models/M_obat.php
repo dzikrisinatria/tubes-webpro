@@ -5,7 +5,7 @@ class M_obat extends CI_Model
 {
     public function getAllObat()
     {
-        return $this->db->get('user')->result_array();
+        return $this->db->get('obat')->result_array();
     }
     
     public function getObatPagination($limit, $start, $keyword = null)
