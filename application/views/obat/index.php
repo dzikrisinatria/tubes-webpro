@@ -106,16 +106,16 @@
 			<div class="modal-body my-auto">
                 <center>
                 <img class="mx-2 mb-3 mt-2 bg-light" height="150px" width="150px"
-                    src="<?= base_url('assets/img/profile/') . $o['foto']; ?>">
-				<h5><?//= $o['nama'];?></h5>
-				<p><?//= $o['role'];?></p>
+                    src="<?= base_url('assets/img/obat/') . $o['gambar']; ?>">
+				<h5><?//= $o['nama_obat'];?></h5>
+				<p><?//= $o['jenis_obat'];?></p>
                 </center>
                 <div class="row mx-auto">
                     <div class="col-4">
                         <h6>Kode Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['email'];?></p>
+                        <p><?= $o['kode_obat'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -123,7 +123,7 @@
                         <h6>Nama Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['username'];?></p>
+                        <p><?= $o['nama_obat'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -131,7 +131,7 @@
                         <h6>Jenis Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['jenis_kelamin'];?></p>
+                        <p><?= $o['jenis_obat'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -139,7 +139,7 @@
                         <h6>Harga</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['tgl_lahir'];?></p>
+                        <p><?= $o['harga'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -147,7 +147,7 @@
                         <h6>Stok</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['alamat'];?></p>
+                        <p><?= $o['stok'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -155,7 +155,7 @@
                         <h6>Bentuk</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['telepon'];?></p>
+                        <p><?= $o['bentuk'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -163,7 +163,7 @@
                         <h6>Fungsi</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['telepon'];?></p>
+                        <p><?= $o['fungsi'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -171,17 +171,17 @@
                         <h6>Aturan</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['telepon'];?></p>
+                        <p><?= $o['aturan'];?></p>
                     </div>
                 </div>
-                <div class="row mx-auto">
+                <!-- <div class="row mx-auto">
                     <div class="col-4">
                         <h6>Terdaftar Sejak</h6>
                     </div>
                     <div class="col-8">
                         <p><?= date('d F Y', $o['date_created']);?></p>
                     </div>
-                </div>
+                </div> -->
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
