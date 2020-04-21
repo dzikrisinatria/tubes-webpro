@@ -11,7 +11,7 @@ class M_obat extends CI_Model
     public function getObatPagination($limit, $start, $keyword = null)
     {
         if ($keyword){
-            $this->cariuser($keyword);
+            $this->cariobat($keyword);
         }
 		$this->db->join('jenis_obat','jenis_obat.id_jenis_obat=obat.id_jenis_obat','LEFT OUTER');
 		$query = $this->db->get('obat', $limit, $start);
@@ -29,9 +29,9 @@ class M_obat extends CI_Model
 
     public function totalRowsPagination($keyword)
     {
-        $this->cariuser($keyword);
+        $this->cariobat($keyword);
         $this->db->join('jenis_obat','jenis_obat.id_jenis_obat=obat.id_jenis_obat','LEFT OUTER');
-        $this->db->from('user');
+        $this->db->from('obat');
         return $this->db->count_all_results();
     }
     
@@ -105,34 +105,34 @@ class M_obat extends CI_Model
     public function editdataobat($new_image)
     {
         return $data = [
-            'kode_obat'          => $this->input->post('kode_obat'),
-            'nama_obat'         => $this->input->post('nama_obat'),
-            'harga'      => $this->input->post('harga'),
-            'stok' => $this->input->post('stok'),
-            'bentuk'     => $this->input->post('bentuk'),
+            'kode_obat'     => $this->input->post('kode_obat'),
+            'nama_obat'     => $this->input->post('nama_obat'),
+            'harga'         => $this->input->post('harga'),
+            'stok'          => $this->input->post('stok'),
+            'bentuk'        => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
-            'aturan'       => $this->input->post('aturan'),
-            'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('jenis_obat')
+            'aturan'        => $this->input->post('aturan'),
+            'gambar'        => $new_image,
+            'id_jenis_obat' => $this->input->post('jenis_obat')
         ];
     }
 
     public function adddataobat($new_image)
     {
         return $data = [
-            'kode_obat'          => $this->input->post('kode_obat'),
-            'nama_obat'         => $this->input->post('nama_obat'),
-            'harga'      => $this->input->post('harga'),
-            'stok' => $this->input->post('stok'),
-            'bentuk'     => $this->input->post('bentuk'),
+            'kode_obat'     => $this->input->post('kode_obat'),
+            'nama_obat'     => $this->input->post('nama_obat'),
+            'harga'         => $this->input->post('harga'),
+            'stok'          => $this->input->post('stok'),
+            'bentuk'        => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
-            'aturan'       => $this->input->post('aturan'),
-            'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('jenis_obat')
+            'aturan'        => $this->input->post('aturan'),
+            'gambar'        => $new_image,
+            'id_jenis_obat' => $this->input->post('jenis_obat')
         ];
     }
 
-    public function updateUser($data,$id_obat)
+    public function updateObat($data,$id_obat)
     {
         $this->db->set($data);
         $this->db->where('id_obat', $id_obat);
