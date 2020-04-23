@@ -29,7 +29,7 @@ class Admin extends CI_Controller
         $data['jml_customer'] = $this->m_user->getUserCountByRole(3);
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
-        $data['jml_pemesanan'] = $this->m_auth->getObatCount();
+        $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
 
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);
@@ -63,7 +63,7 @@ class Admin extends CI_Controller
         $data['alluser'] = $this->m_user->getAllUserAndRole();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost:8080/tubes-webpro/admin/user';
+        $config['base_url']     = 'http://localhost/tubes-webpro/admin/user';
         $config['total_rows']   = $this->m_user->totalRowsPagination($data['keyword']);
         $config['per_page']     = 5;
         $data['start']          = $this->uri->segment(3);
