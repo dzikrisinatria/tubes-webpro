@@ -49,6 +49,12 @@ class M_obat extends CI_Model
         return $this->db->get('obat')->row_array();
     }
     
+    public function getJenisById($id_jenis_obat)
+    {
+        $this->db->where('id_jenis_obat', $id_jenis_obat);
+        return $this->db->get('jenis_obat')->row_array();
+    }
+
     public function getObatCountByJenis($id_jenis_obat)
     {
         $this->db->where('id_jenis_obat', $id_jenis_obat);
@@ -84,6 +90,12 @@ class M_obat extends CI_Model
         return $this->db->delete('obat');
     }
 
+     public function hapusJenisObat($id_jenis_obat)
+    {
+        $this->db->where('id_jenis_obat', $id_jenis_obat);
+        return $this->db->delete('jenis_obat');
+    }
+
     public function cariobat($keyword)
     {
         $this->db->like('kode_obat', $keyword);
@@ -105,30 +117,48 @@ class M_obat extends CI_Model
     public function editdataobat($new_image)
     {
         return $data = [
-            'kode_obat'     => $this->input->post('kode_obat'),
-            'nama_obat'     => $this->input->post('nama_obat'),
-            'harga'         => $this->input->post('harga'),
-            'stok'          => $this->input->post('stok'),
-            'bentuk'        => $this->input->post('bentuk'),
+            'kode_obat'          => $this->input->post('kode_obat'),
+            'nama_obat'         => $this->input->post('nama_obat'),
+            'harga'      => $this->input->post('harga'),
+            'stok' => $this->input->post('stok'),
+            'bentuk'     => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
-            'aturan'        => $this->input->post('aturan'),
-            'gambar'        => $new_image,
-            'id_jenis_obat' => $this->input->post('jenis_obat')
+            'aturan'       => $this->input->post('aturan'),
+            'gambar'          => $new_image,
+            'id_jenis_obat'       => $this->input->post('id_jenis_obat')
         ];
     }
 
     public function adddataobat($new_image)
     {
-        return $data = [
-            'kode_obat'     => $this->input->post('kode_obat'),
-            'nama_obat'     => $this->input->post('nama_obat'),
-            'harga'         => $this->input->post('harga'),
-            'stok'          => $this->input->post('stok'),
-            'bentuk'        => $this->input->post('bentuk'),
+        $data = [
+            'kode_obat'          => $this->input->post('kode_obat'),
+            'nama_obat'         => $this->input->post('nama_obat'),
+            'harga'      => $this->input->post('harga'),
+            'stok' => $this->input->post('stok'),
+            'bentuk'     => $this->input->post('bentuk'),
             'fungsi'        => $this->input->post('fungsi'),
-            'aturan'        => $this->input->post('aturan'),
-            'gambar'        => $new_image,
-            'id_jenis_obat' => $this->input->post('jenis_obat')
+            'aturan'       => $this->input->post('aturan'),
+            'gambar'          => $new_image,
+            'id_jenis_obat'       => $this->input->post('id_jenis_obat')
+        ];
+        $this->db->insert('obat', $data);
+    }
+
+    public function adddatajenisobat()
+    {
+        $data = [
+            'id_jenis_obat' => $this->input->post('id_jenis_obat'),
+            'nama_jenis' => $this->input->post('nama_jenis')
+        ];
+        $this->db->insert('jenis_obat', $data);
+    }
+
+    public function editdatajenisobat()
+    {
+        return $data = [
+            'id_jenis_obat' => $this->input->post('id_jenis_obat'),
+            'nama_jenis' => $this->input->post('nama_jenis')
         ];
     }
 
@@ -137,6 +167,13 @@ class M_obat extends CI_Model
         $this->db->set($data);
         $this->db->where('id_obat', $id_obat);
         $this->db->update('obat');
+    }
+
+    public function updateJenisObat($data,$id_jenis_obat)
+    {
+        $this->db->set($data);
+        $this->db->where('id_jenis_obat', $id_jenis_obat);
+        $this->db->update('jenis_obat');
     }
 
 }

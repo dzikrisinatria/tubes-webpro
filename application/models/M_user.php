@@ -99,7 +99,7 @@ class M_user extends CI_Model
 
     public function adddata($new_image)
     {
-        return $data = [
+        $data = [
             'nama'          => htmlspecialchars($this->input->post('nama', true)),
             'email'         => htmlspecialchars($this->input->post('email', true)),
             'username'      => htmlspecialchars($this->input->post('username', true)),
@@ -112,6 +112,7 @@ class M_user extends CI_Model
             'role_id'       => $this->input->post('role'),
             'date_created'  => time()
         ];
+        $this->db->insert('user', $data);
     }
 
     public function updateUser($data,$id_user)

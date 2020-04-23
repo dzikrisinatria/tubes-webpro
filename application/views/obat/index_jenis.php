@@ -54,23 +54,23 @@
 					<tr>
 						<form action="">
 							<td><?= ++$start ?></td>
-							<td><?= $jo['role'] ?></td>
+							<td><?= $jo['nama_jenis'] ?></td>
 
 							<td width="1">
 								<button type="button" class="btn btn-primary" data-toggle="modal"
-									data-target="#detail<?= $jo['role_id']?>">
+									data-target="#detail<?= $jo['id_jenis_obat']?>">
 									<i class="fas fa-fw fa-info"></i>
 								</button>
                             </td>
                             <td width="1">
 								<a type="button" class="btn btn-warning ml-1"
-									href="<?= base_url(); ?>obat/editobat/<?= $jo['role_id']?>">
+									href="<?= base_url(); ?>obat/editjenisobat/<?= $jo['id_jenis_obat']?>">
 									<i class="fas fa-fw fa-edit"></i>
 									</<button>
                             </td>
                             <td width="1">
                                 <a type="button" class="btn btn-danger ml-2"
-                                    href="<?= base_url(); ?>obat/hapusobat/<?= $jo['role_id']?>"
+                                    href="<?= base_url(); ?>obat/hapusjenisobat/<?= $jo['id_jenis_obat']?>"
                                     onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
                                     <i class="fas fa-fw fa-trash-alt"></i>
                                     </<button>
@@ -89,9 +89,9 @@
 
 </div>
 
-<!-- MODAL FORM DETAIL USER -->
+<!-- MODAL FORM DETAIL JENIS OBAT -->
 <?php $no=1; foreach ($alljenis as $j ) :?>
-<div class="modal fade" id="detail<?= $j['role_id']; ?>" tabindex="-1" role="dialog">
+<div class="modal fade" id="detail<?= $j['id_jenis_obat']; ?>" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<!-- <div class="modal-header">
@@ -103,7 +103,7 @@
                         <h6>Id Jenis Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $j['role_id'];?></p>
+                        <p><?= $j['id_jenis_obat'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -111,7 +111,7 @@
                         <h6>Jenis Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $j['role'];?></p>
+                        <p><?= $j['nama_jenis'];?></p>
                     </div>
                 </div>
 			</div>

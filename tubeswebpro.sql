@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Apr 15, 2020 at 06:32 PM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.11
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 22 Apr 2020 pada 23.58
+-- Versi server: 10.4.10-MariaDB
+-- Versi PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `detail_pemesanan`
+-- Struktur dari tabel `detail_pemesanan`
 --
 
 CREATE TABLE `detail_pemesanan` (
@@ -38,7 +38,7 @@ CREATE TABLE `detail_pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_obat`
+-- Struktur dari tabel `jenis_obat`
 --
 
 CREATE TABLE `jenis_obat` (
@@ -46,10 +46,19 @@ CREATE TABLE `jenis_obat` (
   `nama_jenis` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `jenis_obat`
+--
+
+INSERT INTO `jenis_obat` (`id_jenis_obat`, `nama_jenis`) VALUES
+(1, 'Obat Energik'),
+(2, 'Obat Wajib Apotek'),
+(3, 'Obat Kulit');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obat`
+-- Struktur dari tabel `obat`
 --
 
 CREATE TABLE `obat` (
@@ -65,10 +74,23 @@ CREATE TABLE `obat` (
   `gambar` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `obat`
+--
+
+INSERT INTO `obat` (`id_obat`, `kode_obat`, `nama_obat`, `id_jenis_obat`, `harga`, `stok`, `bentuk`, `fungsi`, `aturan`, `gambar`) VALUES
+(1, 'GNR01', 'Enervon Z', 1, 20000, 50, 'Tablet', 'Membuat Sehat, Menambah daya tahan tubuh', 'Diminum sehari sekali, max pembelian 20 tablet', 'default.png'),
+(2, 'GNR02', 'ONH KOMVI', 1, 15000, 20, 'Cair', 'asdfg', 'zxcvb', 'obhcombi3.jpg'),
+(4, 'WAP01', 'MADU JT', 2, 12000, 100, 'Cair', 'Menambah daya tahan tubuh dan nutrisi', 'Diminum setiap merasa kurang nutrisi', 'madutj.png'),
+(5, 'GNR03', 'Omega 1000', 1, 45000, 20, 'Kapsul', 'Menjaga ketahanan imun tubuh', 'Minum setiap pagi', 'default.png'),
+(6, 'WAP03', 'TRAMODAL', 2, 10000, 150, 'Tablet', 'Obat penenang', 'Diminum saat ingin \"tenang\"', 'Tramadol2.jpg'),
+(7, 'WAP04', 'HEROSIN', 2, 30000, 55, 'Bubuk', 'Menghilangkan gatal', 'Dipakai saat gatal', 'Bedak_Herocyn_85_g.jpg'),
+(8, 'GNR04', 'HEMAVITON C', 1, 20000, 50, 'Tablet', 'Memperkuat daya tahan tubuh', 'Minum di pagi hari setelah makan', 'default.png');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pemesanan`
+-- Struktur dari tabel `pemesanan`
 --
 
 CREATE TABLE `pemesanan` (
@@ -83,7 +105,7 @@ CREATE TABLE `pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -102,7 +124,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `username`, `password`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `telepon`, `foto`, `role_id`, `date_created`) VALUES
@@ -116,7 +138,7 @@ INSERT INTO `user` (`id_user`, `nama`, `email`, `username`, `password`, `jenis_k
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -125,7 +147,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data untuk tabel `user_role`
 --
 
 INSERT INTO `user_role` (`role_id`, `role`) VALUES
@@ -138,104 +160,104 @@ INSERT INTO `user_role` (`role_id`, `role`) VALUES
 --
 
 --
--- Indexes for table `detail_pemesanan`
+-- Indeks untuk tabel `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
   ADD KEY `detail_pemesanan_fk0` (`id_pemesanan`),
   ADD KEY `detail_pemesanan_fk1` (`id_obat`);
 
 --
--- Indexes for table `jenis_obat`
+-- Indeks untuk tabel `jenis_obat`
 --
 ALTER TABLE `jenis_obat`
   ADD PRIMARY KEY (`id_jenis_obat`);
 
 --
--- Indexes for table `obat`
+-- Indeks untuk tabel `obat`
 --
 ALTER TABLE `obat`
   ADD PRIMARY KEY (`id_obat`),
   ADD KEY `obat_fk0` (`id_jenis_obat`);
 
 --
--- Indexes for table `pemesanan`
+-- Indeks untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD PRIMARY KEY (`id_pemesanan`),
   ADD KEY `pemesanan_fk0` (`id_user`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `user_fk0` (`role_id`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `jenis_obat`
+-- AUTO_INCREMENT untuk tabel `jenis_obat`
 --
 ALTER TABLE `jenis_obat`
-  MODIFY `id_jenis_obat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `obat`
+-- AUTO_INCREMENT untuk tabel `obat`
 --
 ALTER TABLE `obat`
-  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_obat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `pemesanan`
+-- AUTO_INCREMENT untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
   MODIFY `id_pemesanan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `detail_pemesanan`
+-- Ketidakleluasaan untuk tabel `detail_pemesanan`
 --
 ALTER TABLE `detail_pemesanan`
   ADD CONSTRAINT `detail_pemesanan_fk0` FOREIGN KEY (`id_pemesanan`) REFERENCES `pemesanan` (`id_pemesanan`),
   ADD CONSTRAINT `detail_pemesanan_fk1` FOREIGN KEY (`id_obat`) REFERENCES `obat` (`id_obat`);
 
 --
--- Constraints for table `obat`
+-- Ketidakleluasaan untuk tabel `obat`
 --
 ALTER TABLE `obat`
   ADD CONSTRAINT `obat_fk0` FOREIGN KEY (`id_jenis_obat`) REFERENCES `jenis_obat` (`id_jenis_obat`);
 
 --
--- Constraints for table `pemesanan`
+-- Ketidakleluasaan untuk tabel `pemesanan`
 --
 ALTER TABLE `pemesanan`
   ADD CONSTRAINT `pemesanan_fk0` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
--- Constraints for table `user`
+-- Ketidakleluasaan untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_fk0` FOREIGN KEY (`role_id`) REFERENCES `user_role` (`role_id`);

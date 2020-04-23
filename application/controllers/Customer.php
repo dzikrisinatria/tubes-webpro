@@ -9,13 +9,13 @@ class Customer extends CI_Controller
         $role_id = $this->session->userdata('role_id');
         $menu = $this->uri->segment(1);
 
-        if (!$this->session->userdata('username')){
-            redirect('auth');
-        } else{
+        // if (!$this->session->userdata('username')){
+        //     redirect('auth');
+        // } else{
             if (($this->session->userdata('role_id') == 1) || ($this->session->userdata('role_id') == 2) ){
                 redirect('auth/blocked');
             }
-        }
+        // }
     }
 
     public function index()
@@ -26,7 +26,7 @@ class Customer extends CI_Controller
         ['username' => $this->session->userdata('username')])->row_array();
 
         $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar_customer', $data);
+        $this->load->view('templates/navbar_customer', $data);
         $this->load->view('customer/index', $data);
         $this->load->view('templates/footer', $data);
     }

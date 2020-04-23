@@ -14,7 +14,7 @@
                 </a>
                 <a href="<?= base_url(); ?>obat/jenisobat">
                     <button class="btn btn-success">
-                        <i class="fas fa-fw fa-plus mr-2"></i>Kelola Jenis Obat
+                        <i class="fas fa-fw fa-pills mr-2"></i>Kelola Jenis Obat
                     </button>
                 </a>
             </div>
@@ -60,7 +60,7 @@
 							<td><?= $o['kode_obat'] ?></td>
 							<td><?= $o['nama_obat']?></td>
 							<td><?= $o['nama_jenis']?></td>
-							<td><?= $o['harga']?></td>
+							<td>Rp<?= $o['harga']?>,-</td>
 
 							<td width="1">
 								<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -105,7 +105,7 @@
 			</div> -->
 			<div class="modal-body my-auto">
                 <center>
-                <img class="mx-2 mb-3 mt-2 bg-light" height="150px" width="150px"
+                <img class="mx-2 mb-3 mt-2 bg-light" height="150px"
                     src="<?= base_url('assets/img/obat/') . $o['gambar']; ?>">
 				<h5><?//= $o['nama_obat'];?></h5>
 				<p><?//= $o['jenis_obat'];?></p>
@@ -131,7 +131,7 @@
                         <h6>Jenis Obat</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['jenis_obat'];?></p>
+                        <p><?= $o['nama_jenis'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -139,7 +139,7 @@
                         <h6>Harga</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $o['harga'];?></p>
+                        <p>Rp<?= $o['harga'];?>,-</p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -174,14 +174,6 @@
                         <p><?= $o['aturan'];?></p>
                     </div>
                 </div>
-                <!-- <div class="row mx-auto">
-                    <div class="col-4">
-                        <h6>Terdaftar Sejak</h6>
-                    </div>
-                    <div class="col-8">
-                        <p><?= date('d F Y', $o['date_created']);?></p>
-                    </div>
-                </div> -->
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

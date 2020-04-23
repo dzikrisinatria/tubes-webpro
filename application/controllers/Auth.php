@@ -19,8 +19,10 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
         if ( $this->form_validation->run() == FALSE ){
+            $data['appname'] = 'Obat Online App';
             $data['title'] = 'Login';
             $this->load->view('templates/auth_header', $data);
+            $this->load->view('templates/navbar_customer', $data);
             $this->load->view('auth/login', $data);
         } else {
             $this->_login();
@@ -92,8 +94,10 @@ class Auth extends CI_Controller
             
         if ( $this->form_validation->run() == FALSE ){
             // echo "gamasuk"; die;
-            $data['title'] = 'Register';
+            $data['appname'] = 'Obat Online App';
+            $data['title'] = 'Daftar';
             $this->load->view('templates/auth_header', $data);
+            $this->load->view('templates/navbar_customer', $data);
             $this->load->view('auth/register');
 
         } else {
