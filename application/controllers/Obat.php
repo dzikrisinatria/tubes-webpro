@@ -26,7 +26,7 @@ class Obat extends CI_Controller
         $data['title'] = 'Kelola Obat';
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
-        $data['jml_pemesanan'] = $this->m_auth->getObatCount();
+        $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
 
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);
@@ -47,7 +47,7 @@ class Obat extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/obat/index';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/obat/index';
         $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);
@@ -158,6 +158,7 @@ class Obat extends CI_Controller
 
     public function editobat($id)
     {
+        // var_dump($id);die;
         $data['appname'] = 'Obat Online App';
         $data['title'] = 'Kelola Obat';
         $sess_username = $this->session->userdata('username');
@@ -214,7 +215,7 @@ class Obat extends CI_Controller
                     //menampilkan pesan error khusus upload
                     $this->session->set_flashdata('message', '<small class="text-danger">' . 
                     $this->upload->display_errors() . '</small>');
-                    redirect('obat/editobat');
+                    redirect('obat/editobat/'.$id);
                 }
             } else{
                 $new_image = 'default.png';
@@ -273,7 +274,7 @@ class Obat extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/obat/jenisobat';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/obat/jenisobat';
         $config['total_rows']   = $this->m_obat->totalRowsJenisPagination($data['keyword']);
         $config['per_page']     = 5;
         $data['start']          = $this->uri->segment(3);

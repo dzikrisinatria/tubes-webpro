@@ -3,10 +3,11 @@
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".collapse">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	<a class="navbar-brand" href="#"><i class="fas fa-clinic-medical mr-3"></i><?= $appname; ?></a>
+	<a class="navbar-brand" href="<?= base_url(''); ?>"><i class="fas fa-clinic-medical mr-3"></i><?= $appname; ?></a>
 
 	<div class="collapse navbar-collapse">
 		<ul class="navbar-nav mr-auto">
+			
 			<?php if ($title == 'Home') :?>
 				<li class="nav-item active">
 			<?php else : ?>
@@ -14,20 +15,28 @@
 			<?php endif; ?>
 				<a class="nav-link" href="<?= base_url(''); ?>">Home <span class="sr-only">(current)</span></a>
 			</li>
+
+			<?php if ($title == 'Obat') :?>
+				<li class="nav-item active">
+			<?php else : ?>
+				<li class="nav-item">
+			<?php endif; ?>
+				<a class="nav-link" href="<?= base_url('customer/obat'); ?>">Obat</a>
+			</li>
+
 			<li class="nav-item">
 				<a class="nav-link" href="#">Profil</a>
 			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
-					Obat
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item" href="<?= base_url(''); ?>">Daftar Obat</a>
-					<a class="dropdown-item" href="<?= base_url(''); ?>">Pesan Obat</a>
-				</div>
-			</li>
 		</ul>
-		<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+		<ul class="navbar-nav navbar-right mt-2 mt-lg-0">
+			<li class="nav-item active mr-4">
+				<a class="nav-link align-self-center" href="<?= base_url('pemesanan/keranjang'); ?>">
+					<button type="button" class="btn btn-outline-dark">
+						<i class="fas fa-shopping-cart fa-lg mr-2"></i>
+						<span class="badge badge-danger"><?= $this->cart->total_items();?></span>
+					</button>
+				</a>
+			</li>
 			<?php if ( $this->session->userdata('username') ) : ?>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">

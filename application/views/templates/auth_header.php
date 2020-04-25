@@ -8,6 +8,8 @@
 
 	<!-- Bootstrap CSS-->
 	<link href="<?= base_url('assets/');?>css/bootstrap.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>fontawesome/css/all.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>fontawesome/webfonts/all.min.css" rel="stylesheet">
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="<?= base_url('assets/');?>js/jquery.js"></script>

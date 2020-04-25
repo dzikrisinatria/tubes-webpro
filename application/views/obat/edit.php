@@ -29,7 +29,7 @@
 				<div class="col-sm-9">
 					<select class="custom-select" name="id_jenis_obat">
 						<?php foreach ($getjenis as $j ) :?>
-							<?php if($getjenis['id_jenis_obat'] == $j['id_jenis_obat']) : ?>
+							<?php if($getobat['id_jenis_obat'] == $j['id_jenis_obat']) : ?>
 						    	<option value="<?= $j['id_jenis_obat']; ?>" selected><?= $j['nama_jenis']; ?></option>
 							<?php else : ?>
 						    	<option value="<?= $j['id_jenis_obat']; ?>"><?= $j['nama_jenis']; ?></option>
