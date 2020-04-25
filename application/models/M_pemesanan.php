@@ -37,7 +37,11 @@ class M_pemesanan extends CI_Model
     }
     public function getAllPemesanan()
     {
-        return $this->db->get('pemesanan')->result_array();
+        $this->db->select("*");
+        $this->db->from('pemesanan');
+        $this->db->join('user','user.id_user=pemesanan.id_user','LEFT OUTER');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     public function getDetailPemesanan($id_pemesanan){
         $this->db->where('id_pemesanan', $id_pemesanan);
@@ -56,6 +60,7 @@ class M_pemesanan extends CI_Model
         if ($keyword){
             $this->caripemesanan($keyword);
         }
+        $this->db->join('user','user.id_user=pemesanan.id_user','LEFT OUTER');
         $query = $this->db->get('pemesanan', $limit, $start);
         return $query->result_array();
     }
@@ -66,5 +71,15 @@ class M_pemesanan extends CI_Model
         $this->db->or_like('metode_pembayaran', $keyword);
         $this->db->or_like('bayar', $keyword);
         $this->db->or_like('status', $keyword);
+    }
+    public function hapusDetailPemesanan($id_pemesanan)
+    {
+        $this->db->where('id_pemesanan', $id_pemesanan);
+        return $this->db->delete('detail_pemesanan');
+    }
+    public function hapusPemesanan($id_pemesanan)
+    {
+        $this->db->where('id_pemesanan', $id_pemesanan);
+        return $this->db->delete('pemesanan');
     }
 }

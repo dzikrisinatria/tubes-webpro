@@ -169,5 +169,17 @@ class Pemesanan extends CI_Controller
         $this->load->view('pemesanan/index', $data);
         $this->load->view('templates/footer', $data);
     }
+    public function hapusPemesanan($id){
+        $this->m_pemesanan->hapusDetailPemesanan($id);
+        $this->m_pemesanan->hapusPemesanan($id);
+        $this->session->set_flashdata('message', 
+        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data Pemesanan berhasil dihapus!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('pemesanan/index');
+    }
 
 }

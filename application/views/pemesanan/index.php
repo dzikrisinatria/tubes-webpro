@@ -24,8 +24,8 @@
 				<thead>
 					<tr>
 						<th scope="col"></th>
-                        <th scope="col">id Customer</th>
-						<th scope="col">Tanggal Pemesanan</th>
+                        <th scope="col">Tanggal Pemesanan</th>
+                        <th scope="col">Customer</th>
 						<th scope="col">Total</th>
 						<th scope="col">Metode Pembayaran</th>
                         <th scope="col">Nominal Pembayaran</th>
@@ -47,12 +47,12 @@
                     <?php foreach ($pemesananPagination as $p ) :?>
                     <tr>
                         <form action="">
-                            <td><?= ++$start ?></td>
-                            <td><?= $p['id_user'] ?></td>
+                            <td><?= ++$start ?></td>                            
                             <td><?= $p['tgl_pemesanan']?></td>
-                            <td><?= $p['total']?></td>
+                            <td><?= $p['nama'] ?></td>
+                            <td>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</td>
                             <td><?= $p['metode_pembayaran']?></td>
-                            <td><?= $p['bayar']?></td>
+                            <td>Rp<?= number_format($p['bayar'], 0,',','.'); ?>,-</td>
                             <td><?php if ($p['status'] == 1) echo "Lunas";
                                 else echo "Belum Lunas";
                                 ?></td>
@@ -63,13 +63,13 @@
                                     <i class="fas fa-fw fa-info"></i>
                                 </button>
                             </td>
-                            <!-- <td width="1">
+                            <td width="1">
                                 <a type="button" class="btn btn-danger ml-2"
                                     href="<?= base_url(); ?>pemesanan/hapusPemesanan/<?= $p['id_pemesanan']?>"
-                                    onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    onClick="return confirm('Apakah Anda yakin ingin menghapus Pemesanan ini?')">
                                     <i class="fas fa-fw fa-user-times"></i>
                                     </<button>
-                            </td> -->
+                            </td>
                         </form>
                     </tr>
                     <?php endforeach; ?>
@@ -95,18 +95,18 @@
             <div class="modal-body my-auto">
                 <div class="row mx-auto">
                     <div class="col-4">
-                        <h6>Id Customer</h6>
-                    </div>
-                    <div class="col-8">
-                        <p><?= $p['id_user'];?></p>
-                    </div>
-                </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
                         <h6>Tanggal Pemesanan</h6>
                     </div>
                     <div class="col-8">
                         <p><?= $p['tgl_pemesanan'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Customer</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $p['nama'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">
@@ -135,6 +135,15 @@
                                 ?></p>
                     </div>
                 </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Alamat Pengiriman</h6>
+                    </div>
+                    <div class="col-8">
+                        <p><?= $p['alamat'];?></p>
+                    </div>
+                </div>
+                
                 <div class="table-responsive">
                     <table class="table table col-7 mx-auto">
                         <thead>
