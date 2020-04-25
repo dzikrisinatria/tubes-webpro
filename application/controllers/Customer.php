@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -53,7 +54,7 @@ class Customer extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost:8080/tubes-webpro/customer/obat';
+        $config['base_url']     = 'http://localhost/tubes-webpro/customer/obat';
         $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
         $config['per_page']     = 4;
         $data['start']          = $this->uri->segment(3);

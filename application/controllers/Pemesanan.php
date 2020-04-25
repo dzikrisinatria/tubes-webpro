@@ -59,25 +59,29 @@ class Pemesanan extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         if ($this->cart->contents()){
-            if ( $this->m_pemesanan->proses($data['user']['id_user']) ){
-                $this->cart->destroy();
-                $this->session->set_flashdata('message', 
-                '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    Pesanan akan diproses, silahkan pilih metode pembayaran.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>');
-                redirect('pemesanan/pembayaran');
-            } else{
-                $this->session->set_flashdata('message', 
-                '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Gagal memproses pemesanan, silahkan ulangi kembali.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>');
-                redirect('pemesanan/keranjang');
+            if($this->input->post('metode')){
+                if ( $this->m_pemesanan->proses($data['user']['id_user']) ){
+                    $this->cart->destroy();
+                    redirect('customer');
+                } else{
+                    $this->session->set_flashdata('message', 
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Gagal memproses pemesanan, silahkan ulangi kembali.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+                    redirect('pemesanan/keranjang');
+                }
+            }
+            else {
+                // $this->session->set_flashdata('message', 
+                // '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                //    Silakan Isi Nominal Uang yang akan dibayarkan
+                //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                //         <span aria-hidden="true">&times;</span>
+                //     </button>
+                // </div>');
             }
         } 
 
@@ -100,6 +104,15 @@ class Pemesanan extends CI_Controller
 
         $data['getobat'] = $this->m_obat->getAllObat();
         
+        $data['allPemesanan'] = $this->m_pemesanan->getAllPemesanan();
+
+        $rows = count($data['allPemesanan']);
+        for ($x = 0; $x < $rows; $x++)
+        {
+            $id_pemesanan = $data['allPemesanan'][$x]['id_pemesanan'];
+            $data['allPemesanan'][$x]['itemPemesanan'] = $this->m_pemesanan->getDetailPemesanan($id_pemesanan);
+            
+        }
         //cek keyword di dalam kolom pencarian
         if ( $this->input->post('keyword') ){
             //jika ada keyword masuk ke dalam data keyword
@@ -109,13 +122,9 @@ class Pemesanan extends CI_Controller
         } else {
             $data['keyword'] = null;
         }
-
-        $data['getjenis'] = $this->m_obat->getAllJenis();
-        $data['allobat'] = $this->m_obat->getAllObatAndJenis();
-
         // PAGINATION
-        $config['base_url']     = 'http://localhost:8080/tubes-webpro/obat/index';
-        $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
+        $config['base_url']     = 'http://localhost/tubes-webpro/pemesanan/index';
+        $config['total_rows']   = $this->m_pemesanan->totalRowsPagination($data['keyword']);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);
 
@@ -149,7 +158,7 @@ class Pemesanan extends CI_Controller
         
         $this->pagination->initialize($config);
         
-        $data['obatpagination'] = $this->m_obat->getObatPagination($config['per_page'], $data['start'], $data['keyword']);
+        $data['pemesananPagination'] = $this->m_pemesanan->getPemesananPagination($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         if (($this->session->userdata('role_id') == 1)){

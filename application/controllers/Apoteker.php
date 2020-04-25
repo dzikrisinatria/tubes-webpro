@@ -25,7 +25,7 @@ class Apoteker extends CI_Controller
         $data['title'] = 'Dashboard';
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
-        $data['jml_pemesanan'] = $this->m_auth->getObatCount();
+        $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
         
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);

@@ -81,7 +81,7 @@
 					<?php else : ?>
 						<li class="nav-item">
 					<?php endif; ?>
-						<a class="nav-link" href="<?= base_url('admin/pemesanan'); ?>">
+						<a class="nav-link" href="<?= base_url('pemesanan'); ?>">
 						<i class="fas fa-fw fa-file-invoice mr-3"></i>Pemesanan</a>
 					</li>
 
