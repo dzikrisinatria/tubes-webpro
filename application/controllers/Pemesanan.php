@@ -158,7 +158,8 @@ class Pemesanan extends CI_Controller
         
         $this->pagination->initialize($config);
         
-        $data['pemesananPagination'] = $this->m_pemesanan->getPemesananPagination($config['per_page'], $data['start'], $data['keyword']);
+        $data['pemesananPagination'] = $this->m_pemesanan->getPemesananPagination($config['per_page'], $data['start'], $data['keyword'], ($this->session->userdata('role_id')));
+       
 
         $this->load->view('templates/header', $data);
         if (($this->session->userdata('role_id') == 1)){
@@ -181,5 +182,41 @@ class Pemesanan extends CI_Controller
         </div>');
         redirect('pemesanan/index');
     }
+    public function konfirmasiPemesanan($id)
+    {
+        // var_dump($id);die;
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'Kelola Obat';
+        $sess_username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getUser($sess_username);
 
+        $data['Pemesanan'] = $this->m_pemesanan->getPemesananById($id);
+        $data['Pemesanan']['itemPemesanan'] = $this->m_pemesanan->getDetailPemesanan($id);
+
+            if ($this->input->post('nominal')){
+                foreach ($data['Pemesanan']['itemPemesanan'] as $o){
+                    $newStok = $o['stok'] - $o['jumlah'];
+                    $this->m_obat->updateStokObat($o['id_obat'], $newStok);
+                }
+                $nominal = $this->input->post('nominal');
+                $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Pemesanan berhasil dikonfirmasi!</div>');
+                redirect('pemesanan/index');
+            }
+            else {
+                $this->session->set_flashdata('message', 
+                '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Harap mengisi jumlah nominal yang dibayarkan.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+            }
+        
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar_apoteker', $data);
+            $this->load->view('pemesanan/konfirmasiPemesanan', $data);
+            $this->load->view('templates/footer', $data);
+    }
 }

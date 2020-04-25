@@ -175,5 +175,8 @@ class M_obat extends CI_Model
         $this->db->where('id_jenis_obat', $id_jenis_obat);
         $this->db->update('jenis_obat');
     }
-
+    public function updateStokObat($id, $stok)
+    {
+        $this->db->query("UPDATE `obat` SET `stok` = ".$stok." WHERE `obat`.`id_obat` = ".$id.";");
+    }
 }

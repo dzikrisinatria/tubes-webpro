@@ -56,10 +56,14 @@ class M_pemesanan extends CI_Model
         $this->db->from('pemesanan');
         return $this->db->count_all_results();
     }
-    public function getPemesananPagination($limit, $start, $keyword = null){
+    public function getPemesananPagination($limit, $start, $keyword = null, $role){
+        if ($role == 2){
+            $this->db->where('status',"0");
+        }
         if ($keyword){
             $this->caripemesanan($keyword);
         }
+        
         $this->db->join('user','user.id_user=pemesanan.id_user','LEFT OUTER');
         $query = $this->db->get('pemesanan', $limit, $start);
         return $query->result_array();
@@ -81,5 +85,23 @@ class M_pemesanan extends CI_Model
     {
         $this->db->where('id_pemesanan', $id_pemesanan);
         return $this->db->delete('pemesanan');
+    }
+    public function getPemesananById($id_pemesanan)
+    {
+        $this->db->where('id_pemesanan', $id_pemesanan);
+        $this->db->from('pemesanan');
+        $this->db->join('user','user.id_user=pemesanan.id_user','LEFT OUTER');
+        $query = $this->db->get();
+        return $query->row_array();
+    }
+    public function updatePemesanan($data,$id_pemesanan)
+    {
+        $this->db->set($data);
+        $this->db->where('id_pemesanan', $id_pemesanan);
+        $this->db->update('pemesanan');
+    }
+    public function updateKonfirmasiPemesanan($id, $nominal)
+    {
+        $this->db->query("UPDATE `pemesanan` SET `bayar` = ".$nominal.", `status` = '1' WHERE `pemesanan`.`id_pemesanan` = ".$id.";");
     }
 }

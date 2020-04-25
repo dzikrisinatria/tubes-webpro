@@ -56,7 +56,7 @@
                             <td><?php if ($p['status'] == 1) echo "Lunas";
                                 else echo "Belum Lunas";
                                 ?></td>
-
+                            <?php if (($this->session->userdata('role_id')) == 1): ?>
                             <td width="1">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#detail<?= $p['id_pemesanan']?>">
@@ -70,6 +70,14 @@
                                     <i class="fas fa-fw fa-user-times"></i>
                                     </<button>
                             </td>
+                            <?php else: ?>
+                                <td width="1">
+                                    <a type="button" class="btn btn-warning ml-1"
+                                    href="<?= base_url(); ?>pemesanan/konfirmasiPemesanan/<?= $p['id_pemesanan']?>">
+                                    <i class="fas fa-fw fa-edit"></i>
+                                    </<button>
+                                </td>
+                            <?php endif; ?>
                         </form>
                     </tr>
                     <?php endforeach; ?>
@@ -183,6 +191,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
             </div>
+
         </div>
     </div>
 </div>
