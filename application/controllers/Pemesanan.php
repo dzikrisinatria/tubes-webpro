@@ -195,23 +195,38 @@ class Pemesanan extends CI_Controller
 
             if ($this->input->post('nominal')){
                 foreach ($data['Pemesanan']['itemPemesanan'] as $o){
+                    if($o['stok'] < $o['jumlah']){
+                        $this->session->set_flashdata('message', 
+                        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Stok tidak cukup.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>');
+                        redirect('pemesanan/index');
+                    }
+                }
+                foreach ($data['Pemesanan']['itemPemesanan'] as $o){
                     $newStok = $o['stok'] - $o['jumlah'];
                     $this->m_obat->updateStokObat($o['id_obat'], $newStok);
                 }
+
                 $nominal = $this->input->post('nominal');
-                $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                Pemesanan berhasil dikonfirmasi!</div>');
-                redirect('pemesanan/index');
-            }
-            else {
-                $this->session->set_flashdata('message', 
-                '<div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Harap mengisi jumlah nominal yang dibayarkan.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>');
+                if ($this->input->post('nominal')==$data['Pemesanan']['total']){
+                    $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Pemesanan berhasil dikonfirmasi!</div>');
+                    redirect('pemesanan/index');
+                } else {
+                    $this->session->set_flashdata('message', 
+                    '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Harap mengisi jumlah nominal yang dibayarkan dengan benar.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+                    redirect('pemesanan/index');
+                }    
             }
         
             $this->load->view('templates/header', $data);
