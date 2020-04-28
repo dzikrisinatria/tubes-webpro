@@ -51,6 +51,7 @@
 						<i class="fas fa-fw fa-users mr-3"></i>User</a>
 					</li>
 					
+					<!--
 					<?php if ($title == 'Role User') :?>
 						<li class="nav-item active">
 					<?php else : ?>
@@ -58,7 +59,8 @@
 					<?php endif; ?>
 						<a class="nav-link" href="<?= base_url('admin/roleuser'); ?>">
 						<i class="fas fa-fw fa-user-tie mr-3"></i>Role User</a>
-					</li>
+					</li> 
+					--> 
 
 				</ul>
 				
