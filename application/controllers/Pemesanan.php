@@ -62,7 +62,14 @@ class Pemesanan extends CI_Controller
             if($this->input->post('metode')){
                 if ( $this->m_pemesanan->proses($data['user']['id_user']) ){
                     $this->cart->destroy();
-                    redirect('customer');
+                    $this->session->set_flashdata('message', 
+                    '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Pesanan Anda sedang diproses, silahkan kembali lagi nanti.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>');
+                    redirect('customer/obat');
                 } else{
                     $this->session->set_flashdata('message', 
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -94,7 +101,7 @@ class Pemesanan extends CI_Controller
     public function index()
     {
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Pemesanan';
+        $data['title'] = 'Pemesanan Obat';
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
         $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
@@ -123,7 +130,7 @@ class Pemesanan extends CI_Controller
             $data['keyword'] = null;
         }
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/pemesanan/index';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/pemesanan/index';
         $config['total_rows']   = $this->m_pemesanan->totalRowsPagination($data['keyword']);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);
@@ -170,6 +177,7 @@ class Pemesanan extends CI_Controller
         $this->load->view('pemesanan/index', $data);
         $this->load->view('templates/footer', $data);
     }
+
     public function hapusPemesanan($id){
         $this->m_pemesanan->hapusDetailPemesanan($id);
         $this->m_pemesanan->hapusPemesanan($id);
@@ -182,56 +190,57 @@ class Pemesanan extends CI_Controller
         </div>');
         redirect('pemesanan/index');
     }
+
     public function konfirmasiPemesanan($id)
     {
         // var_dump($id);die;
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Kelola Obat';
+        $data['title'] = 'Pemesanan Obat';
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);
 
         $data['Pemesanan'] = $this->m_pemesanan->getPemesananById($id);
         $data['Pemesanan']['itemPemesanan'] = $this->m_pemesanan->getDetailPemesanan($id);
 
-            if ($this->input->post('nominal')){
-                foreach ($data['Pemesanan']['itemPemesanan'] as $o){
-                    if($o['stok'] < $o['jumlah']){
-                        $this->session->set_flashdata('message', 
-                        '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            Stok tidak cukup.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>');
-                        redirect('pemesanan/index');
-                    }
-                }
-                foreach ($data['Pemesanan']['itemPemesanan'] as $o){
-                    $newStok = $o['stok'] - $o['jumlah'];
-                    $this->m_obat->updateStokObat($o['id_obat'], $newStok);
-                }
-
-                $nominal = $this->input->post('nominal');
-                if ($this->input->post('nominal')==$data['Pemesanan']['total']){
-                    $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                    Pemesanan berhasil dikonfirmasi!</div>');
-                    redirect('pemesanan/index');
-                } else {
+        if ($this->input->post('nominal')){
+            foreach ($data['Pemesanan']['itemPemesanan'] as $o){
+                if($o['stok'] < $o['jumlah']){
                     $this->session->set_flashdata('message', 
-                    '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        Harap mengisi jumlah nominal yang dibayarkan dengan benar.
+                    '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Stok tidak cukup.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>');
-                    redirect('pemesanan/index');
-                }    
+                    redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
+                }
             }
-        
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/sidebar_apoteker', $data);
-            $this->load->view('pemesanan/konfirmasiPemesanan', $data);
-            $this->load->view('templates/footer', $data);
+            foreach ($data['Pemesanan']['itemPemesanan'] as $o){
+                $newStok = $o['stok'] - $o['jumlah'];
+                $this->m_obat->updateStokObat($o['id_obat'], $newStok);
+            }
+
+            $nominal = $this->input->post('nominal');
+            if ($this->input->post('nominal') >= $data['Pemesanan']['total']){
+                $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Pemesanan berhasil dikonfirmasi!</div>');
+                redirect('pemesanan/index');
+            } else {
+                $this->session->set_flashdata('message', 
+                '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    Harap mengisi jumlah nominal yang dibayarkan dengan benar.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>');
+                redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
+            }    
+        }
+    
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar_apoteker', $data);
+        $this->load->view('pemesanan/konfirmasiPemesanan', $data);
+        $this->load->view('templates/footer', $data);
     }
 }

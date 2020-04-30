@@ -3,6 +3,7 @@
     
     <div class="container-fluid w-100 col-7 mb-4">
         <h3>Keranjang</h3>
+        <?= $this->session->flashdata('message'); ?>
     </div>
     <div class="table-responsive">
         <table class="table table-hover col-7 mx-auto">

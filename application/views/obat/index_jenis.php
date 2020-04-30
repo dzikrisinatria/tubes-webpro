@@ -57,23 +57,29 @@
 							<td><?= $jo['nama_jenis'] ?></td>
 
 							<td width="1">
-								<button type="button" class="btn btn-primary" data-toggle="modal"
-									data-target="#detail<?= $jo['id_jenis_obat']?>">
-									<i class="fas fa-fw fa-info"></i>
-								</button>
+                                <span data-toggle="tooltip" data-placement="left" title="Detail">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#detail<?= $jo['id_jenis_obat']?>">
+                                        <i class="fas fa-fw fa-info"></i>
+                                    </button>
+                                </span>
                             </td>
                             <td width="1">
-								<a type="button" class="btn btn-warning ml-1"
-									href="<?= base_url(); ?>obat/editjenisobat/<?= $jo['id_jenis_obat']?>">
-									<i class="fas fa-fw fa-edit"></i>
-									</<button>
-                            </td>
-                            <td width="1">
-                                <a type="button" class="btn btn-danger ml-2"
-                                    href="<?= base_url(); ?>obat/hapusjenisobat/<?= $jo['id_jenis_obat']?>"
-                                    onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
-                                    <i class="fas fa-fw fa-trash-alt"></i>
+                                <span data-toggle="tooltip" data-placement="left" title="Edit">
+                                    <a href="<?= base_url(); ?>obat/editjenisobat/<?= $jo['id_jenis_obat']?>">
+                                    <button type="button" class="btn btn-warning ml-1">
+                                        <i class="fas fa-fw fa-edit"></i>
                                     </<button>
+                                </span>
+                            </td>
+                            <td width="1">
+                                <span data-toggle="tooltip" data-placement="left" title="Hapus">
+                                    <a href="<?= base_url(); ?>obat/hapusjenisobat/<?= $jo['id_jenis_obat']?>"
+                                        onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
+                                    <button type="button" class="btn btn-danger ml-1">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </<button>
+                                </span>
 							</td>
 						</form>
 					</tr>

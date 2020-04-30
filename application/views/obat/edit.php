@@ -1,4 +1,4 @@
-<div class="col pt-5 mb-4">
+<div class="col pt-3 mb-4">
 	<div class="container mt-5">
 		<h2>Edit Obat</h2>
 		<!-- MULAI KONTEN DISINI -->

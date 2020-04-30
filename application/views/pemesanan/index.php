@@ -1,4 +1,4 @@
-<div class="col pt-5 mb-4">
+<div class="col pt-3 mb-4">
 	<div class="container mt-5">
 		<h2>Pemesanan</h2>
 		<!-- MULAI KONTEN DISINI -->
@@ -28,7 +28,7 @@
                         <th scope="col">Customer</th>
 						<th scope="col">Total</th>
 						<th scope="col">Metode Pembayaran</th>
-                        <th scope="col">Nominal Pembayaran</th>
+                        <th scope="col">Nominal Bayar</th>
                         <th scope="col">Status</th>
                         <th scope="col" colspan="2">Action</th>
 
@@ -53,28 +53,36 @@
                             <td>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</td>
                             <td><?= $p['metode_pembayaran']?></td>
                             <td>Rp<?= number_format($p['bayar'], 0,',','.'); ?>,-</td>
-                            <td><?php if ($p['status'] == 1) echo "Lunas";
-                                else echo "Belum Lunas";
-                                ?></td>
+                            <td>
+                                <?php if ($p['status'] == 1) {
+                                    echo '<h5><span class="badge text-white" style="background: #00b894;">Lunas</span></h5>';
+                                }else{
+                                    echo '<h5><span class="badge badge-danger">Belum Lunas</span></h5>';
+                                }?>
+                            </td>
                             <?php if (($this->session->userdata('role_id')) == 1): ?>
                             <td width="1">
-                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#detail<?= $p['id_pemesanan']?>">
-                                    <i class="fas fa-fw fa-info"></i>
-                                </button>
+                                <span data-toggle="tooltip" data-placement="left" title="Detail">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#detail<?= $p['id_pemesanan']?>">
+                                        <i class="fas fa-fw fa-info"></i>
+                                    </button>
+                                </span>
                             </td>
                             <td width="1">
-                                <a type="button" class="btn btn-danger ml-2"
-                                    href="<?= base_url(); ?>pemesanan/hapusPemesanan/<?= $p['id_pemesanan']?>"
+                                <span data-toggle="tooltip" data-placement="left" title="Hapus">
+                                <a href="<?= base_url(); ?>pemesanan/hapusPemesanan/<?= $p['id_pemesanan']?>"
                                     onClick="return confirm('Apakah Anda yakin ingin menghapus Pemesanan ini?')">
+                                <button type="button" class="btn btn-danger ml-1">
                                     <i class="fas fa-fw fa-user-times"></i>
-                                    </<button>
+                                </<button>
                             </td>
                             <?php else: ?>
                                 <td width="1">
-                                    <a type="button" class="btn btn-warning ml-1"
+                                    <span data-toggle="tooltip" data-placement="left" title="Konfirmasi">
+                                    <a type="button" class="btn text-white ml-1" style="background: #00b894;"
                                     href="<?= base_url(); ?>pemesanan/konfirmasiPemesanan/<?= $p['id_pemesanan']?>">
-                                    <i class="fas fa-fw fa-edit"></i>
+                                    <i class="fas fa-fw fa-tasks fa-lg"></i>
                                     </<button>
                                 </td>
                             <?php endif; ?>
@@ -92,7 +100,7 @@
 </div>
 
 
-<!-- MODAL FORM DETAIL OBAT -->
+<!-- MODAL FORM DETAIL PEMESANAN -->
 <?php $no=1; foreach ($allPemesanan as $p ) :?>
 <div class="modal fade" id="detail<?= $p['id_pemesanan']; ?>" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -100,60 +108,62 @@
             <!-- <div class="modal-header">
                 <h4>Detail User</h4>
             </div> -->
-            <div class="modal-body my-auto">
-                <div class="row mx-auto">
-                    <div class="col-4">
+            <div class="modal-body mt-3">
+                <div class="row mx-auto my-2">
+                    <div class="col">
                         <h6>Tanggal Pemesanan</h6>
                     </div>
-                    <div class="col-8">
-                        <p><?= $p['tgl_pemesanan'];?></p>
+                    <div class="col-7">
+                        <?= $p['tgl_pemesanan'];?>
                     </div>
                 </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
+                <div class="row mx-auto my-2">
+                    <div class="col">
                         <h6>Customer</h6>
                     </div>
-                    <div class="col-8">
-                        <p><?= $p['nama'];?></p>
+                    <div class="col-7">
+                        <?= $p['nama'];?>
                     </div>
                 </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
-                        <h6>Metode Pembayaran</h6>
-                    </div>
-                    <div class="col-8">
-                        <p><?= $p['metode_pembayaran'];?></p>
-                    </div>
-                </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
-                        <h6>Nominal Pembayaran</h6>
-                    </div>
-                    <div class="col-8">
-                        <p>Rp<?= $p['bayar'];?>,-</p>
-                    </div>
-                </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
-                        <h6>Status</h6>
-                    </div>
-                    <div class="col-8">
-                        <p><?php if ($p['status'] == 1) echo "Lunas";
-                                else echo "Belum Lunas";
-                                ?></p>
-                    </div>
-                </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
+                <div class="row mx-auto my-2">
+                    <div class="col">
                         <h6>Alamat Pengiriman</h6>
                     </div>
-                    <div class="col-8">
-                        <p><?= $p['alamat'];?></p>
+                    <div class="col-7">
+                        <?= $p['alamat'];?>
+                    </div>
+                </div>
+                <div class="row mx-auto my-2">
+                    <div class="col">
+                        <h6>Metode Pembayaran</h6>
+                    </div>
+                    <div class="col-7">
+                        <?= $p['metode_pembayaran'];?>
+                    </div>
+                </div>
+                <div class="row mx-auto my-2">
+                    <div class="col">
+                        <h6>Nominal Pembayaran</h6>
+                    </div>
+                    <div class="col-7">
+                        Rp<?= $p['bayar'];?>,-
+                    </div>
+                </div>
+                <div class="row mx-auto my-2">
+                    <div class="col">
+                        <h6>Status</h6>
+                    </div>
+                    <div class="col-7">
+                        <?php if ($p['status'] == 1) {
+                            echo "Lunas";
+                        }else{
+                            echo "Belum Lunas";
+                        }?>
                     </div>
                 </div>
                 
                 <div class="table-responsive">
-                    <table class="table table col-7 mx-auto">
+                    <table class="table table col mx-auto mt-4">
                         <thead>
                             <tr>
                                 <th scope="col"></th>
