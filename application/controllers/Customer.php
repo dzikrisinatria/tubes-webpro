@@ -36,6 +36,20 @@ class Customer extends CI_Controller
         $this->load->view('templates/footer', $data);
     }
 
+    public function profile()
+    {
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'Profil Saya';
+
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getProfile($username);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar_customer', $data);
+        $this->load->view('customer/profile', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
     public function obat()
     {
         $data['appname'] = 'Obat Online App';
@@ -56,7 +70,7 @@ class Customer extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/customer/obat';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/customer/obat';
         $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
         $config['per_page']     = 4;
         $data['start']          = $this->uri->segment(3);

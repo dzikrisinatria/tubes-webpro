@@ -1,5 +1,5 @@
-<div class="col pt-5 mb-4">
-	<div class="container mt-5">
+<div class="col pt-5">
+	<div class="container mt-4">
 		<h2>Tambah User</h2>
 		<!-- MULAI KONTEN DISINI -->
 
@@ -52,7 +52,7 @@
                     <?= form_error('password', '<small class="form-text text-danger">', '</small>'); ?>
                 </div>
             </div>
-            <hr>
+            <!-- <hr> -->
 			<div class="form-group row">
 				<label for="nama" class="col-sm-3 col-form-label">Nama Lengkap</label>
 				<div class="col-sm-9">

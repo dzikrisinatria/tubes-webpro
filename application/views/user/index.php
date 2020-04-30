@@ -1,17 +1,19 @@
-<div class="col pt-5 mb-4">
+<div class="col pt-3 mb-4">
 	<div class="container mt-5">
 		<h2>User</h2>
 		<!-- MULAI KONTEN DISINI -->
 
 		<?= $this->session->flashdata('message'); ?>
 
-		<div class="mt-4 row justify-content-between">
-			<a href="<?= base_url(); ?>admin/tambahuser">
-				<button class="btn btn-success">
-					<i class="fas fa-fw fa-user-plus mr-2"></i>Tambah User
-				</button>
-			</a>
-            <form action="<?= base_url('admin/user'); ?>" method="post" class="col-4">
+		<div class="mt-4 row">
+            <div class="col justify-content-start">
+                <a href="<?= base_url(); ?>admin/tambahuser">
+                    <button class="btn btn-success">
+                        <i class="fas fa-fw fa-user-plus mr-2"></i>Tambah User
+                    </button>
+                </a>
+            </div>
+            <form action="<?= base_url('admin/user'); ?>" method="post" class="col-4 justify-content-end">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari.." name="keyword" autocomplete="off" autofocus
                     value="<?= set_value('keyword'); ?>">
@@ -56,23 +58,29 @@
 							<td><?= $u['role']?></td>
 
 							<td width="1">
-								<button type="button" class="btn btn-primary" data-toggle="modal"
-									data-target="#detail<?= $u['id_user']?>">
-									<i class="fas fa-fw fa-info"></i>
-								</button>
+                                <span data-toggle="tooltip" data-placement="left" title="Detail">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#detail<?= $u['id_user']?>">
+                                        <i class="fas fa-fw fa-info"></i>
+                                    </button>
+                                </span>
                             </td>
                             <td width="1">
-								<a type="button" class="btn btn-warning ml-1"
-									href="<?= base_url(); ?>admin/edituser/<?= $u['id_user']?>">
-									<i class="fas fa-fw fa-user-edit"></i>
-									</<button>
+                                <span data-toggle="tooltip" data-placement="left" title="Edit">
+                                    <a href="<?= base_url(); ?>admin/edituser/<?= $u['id_user']?>">
+                                    <button type="button" class="btn btn-warning ml-1">
+                                        <i class="fas fa-fw fa-user-edit"></i>
+                                    </button>
+                                </span>
                             </td>
                             <td width="1">
-                                <a type="button" class="btn btn-danger ml-2"
-                                    href="<?= base_url(); ?>admin/hapususer/<?= $u['id_user']?>"
-                                    onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
-                                    <i class="fas fa-fw fa-user-times"></i>
-                                    </<button>
+                                <span data-toggle="tooltip" data-placement="left" title="Hapus">    
+                                    <a href="<?= base_url(); ?>admin/hapususer/<?= $u['id_user']?>"
+                                        onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <button type="button" class="btn btn-danger ml-1">
+                                        <i class="fas fa-fw fa-user-times"></i>
+                                    </button>
+                                </span>
 							</td>
 						</form>
 					</tr>

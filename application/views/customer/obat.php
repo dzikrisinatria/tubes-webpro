@@ -2,6 +2,7 @@
     <!-- MULAI KONTEN DISINI -->
 
     <div class="row col-11 mb-4 mx-auto justify-content-start">
+        <?= $this->session->flashdata('message'); ?>
         <div class="col-8">
             <h3>Daftar Obat</h3>
         </div>

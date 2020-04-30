@@ -8,7 +8,8 @@
 
 	<!-- Bootstrap CSS-->
     <link href="<?= base_url('assets/');?>css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url('assets/');?>css/style.css" rel="stylesheet">
+    <!-- <link href="<?= base_url('assets/');?>css/style.css" rel="stylesheet"> -->
+    <link href="<?= base_url('assets/');?>css/style2.css" rel="stylesheet">
 	<link href="<?= base_url('assets/');?>fontawesome/css/all.min.css" rel="stylesheet">
 	<link href="<?= base_url('assets/');?>fontawesome/webfonts/all.min.css" rel="stylesheet">
 

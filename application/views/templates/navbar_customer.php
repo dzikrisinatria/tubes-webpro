@@ -58,7 +58,7 @@
 							src="<?= base_url('assets/img/profile/') . $user['foto']; ?>">
 					</a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">My Profile</a>
+						<a class="dropdown-item" href="<?= base_url('customer/profile'); ?>">Profil Saya</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="<?= base_url('auth/logout'); ?>">Logout</a>
 					</div>

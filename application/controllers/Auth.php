@@ -12,7 +12,13 @@ class Auth extends CI_Controller
 	public function index()
 	{
         if ($this->session->userdata('username')){
-            redirect('user');
+            if ($this->session->userdata('role_id') == 1){
+                redirect('admin');
+            } else if ($this->session->userdata('role_id') == 2){
+                redirect('apoteker');
+            } else{
+                redirect('customer');
+            }
         }
 
         $this->form_validation->set_rules('username', 'Username', 'trim|required');
@@ -72,7 +78,13 @@ class Auth extends CI_Controller
     public function register()
     {
         if ($this->session->userdata('username')){
-            redirect('user');
+            if ($this->session->userdata('role_id') == 1){
+                redirect('admin');
+            } else if ($this->session->userdata('role_id') == 2){
+                redirect('apoteker');
+            } else{
+                redirect('customer');
+            }
         }
         
         $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required|trim|min_length[3]');
@@ -148,5 +160,23 @@ class Auth extends CI_Controller
     public function blocked()
     {
         $this->load->view('auth/blocked');
+    }
+
+    public function profile()
+    {
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'Profil Saya';
+
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getProfile($username);
+
+        $this->load->view('templates/header', $data);
+        if ($data['user']['role_id'] == 1){
+            $this->load->view('templates/sidebar_admin', $data);
+        } else if ($data['user']['role_id'] == 2){
+            $this->load->view('templates/sidebar_apoteker', $data);
+        }
+        $this->load->view('auth/profile', $data);
+        $this->load->view('templates/footer', $data);
     }
 }

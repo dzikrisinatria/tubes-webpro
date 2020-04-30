@@ -55,4 +55,11 @@ class M_auth extends CI_Model
 
         $this->db->insert('user', $data);
     }
+
+    public function getProfile($username)
+    {
+        $this->db->join('user_role','user_role.role_id=user.role_id','LEFT OUTER');
+        $this->db->where('username', $username);
+        return $this->db->get('user')->row_array();
+    }
 }
