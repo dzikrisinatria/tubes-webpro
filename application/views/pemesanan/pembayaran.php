@@ -2,7 +2,7 @@
 	<!-- MULAI KONTEN DISINI -->
 
         <?= $this->session->flashdata('message'); ?>
-    <h2>Checkout</h2>
+    <h2>Pembayaran</h2>
     <div>
     	<h4>Alamat Pengiriman</h4>
     	<p><?= $user['nama'] ?></p>

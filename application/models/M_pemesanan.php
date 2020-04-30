@@ -104,4 +104,25 @@ class M_pemesanan extends CI_Model
     {
         $this->db->query("UPDATE `pemesanan` SET `bayar` = ".$nominal.", `status` = '1' WHERE `pemesanan`.`id_pemesanan` = ".$id.";");
     }
+
+    //By User
+    public function getPemesananPaginationByUser($limit, $start, $keyword = null, $id_user){
+        if ($keyword){
+            $this->caripemesanan($keyword);
+        }
+        $this->db->where('user.id_user',$id_user);
+        $this->db->join('user','user.id_user=pemesanan.id_user','LEFT OUTER');
+        $query = $this->db->get('pemesanan', $limit, $start);
+        return $query->result_array();
+    }
+    public function totalRowsPaginationByUser($keyword, $id_user)
+    {
+        if ($keyword){
+            $this->caripemesanan($keyword);
+        }
+        $this->db->where('id_user',$id_user);
+        $this->db->from('pemesanan');
+        return $this->db->count_all_results();
+    }
+    // end of By User
 }

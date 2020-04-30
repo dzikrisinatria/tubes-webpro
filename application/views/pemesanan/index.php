@@ -53,8 +53,8 @@
                             <td>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</td>
                             <td><?= $p['metode_pembayaran']?></td>
                             <td>Rp<?= number_format($p['bayar'], 0,',','.'); ?>,-</td>
-                            <td><?php if ($p['status'] == 1) echo "Lunas";
-                                else echo "Belum Lunas";
+                            <td><?php if ($p['status'] == 1) echo "Selesai";
+                                else echo "Belum Selesai";
                                 ?></td>
                             <?php if (($this->session->userdata('role_id')) == 1): ?>
                             <td width="1">

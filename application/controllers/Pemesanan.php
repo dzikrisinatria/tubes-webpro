@@ -186,7 +186,7 @@ class Pemesanan extends CI_Controller
     {
         // var_dump($id);die;
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Kelola Obat';
+        $data['title'] = 'Pemesanan';
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);
 
@@ -234,4 +234,5 @@ class Pemesanan extends CI_Controller
             $this->load->view('pemesanan/konfirmasiPemesanan', $data);
             $this->load->view('templates/footer', $data);
     }
+    
 }
