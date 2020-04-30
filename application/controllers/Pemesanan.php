@@ -243,4 +243,5 @@ class Pemesanan extends CI_Controller
         $this->load->view('pemesanan/konfirmasiPemesanan', $data);
         $this->load->view('templates/footer', $data);
     }
+    
 }

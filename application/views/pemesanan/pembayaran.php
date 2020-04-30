@@ -1,18 +1,21 @@
 <div class="container-fluid pt-5 mt-5">
 	<!-- MULAI KONTEN DISINI -->
-
+  
 	<div class="col-7 mx-auto">
 		<div class="row mb-4">
 			<div class="col">
 				<h2>Pembayaran</h2>
 			</div>
 		</div>
-
+    
 		<div class="row mb-3">
 			<div class="col">
 				<h5>Data Pengiriman</h5>
 			</div>
 		</div>
+    
+    <?= $this->session->flashdata('message'); ?>
+    
 		<div class="row mb-2">
 			<div class="col-2">
 				<h6>Nama</h6>

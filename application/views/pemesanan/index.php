@@ -53,13 +53,15 @@
                             <td>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</td>
                             <td><?= $p['metode_pembayaran']?></td>
                             <td>Rp<?= number_format($p['bayar'], 0,',','.'); ?>,-</td>
+                          
                             <td>
                                 <?php if ($p['status'] == 1) {
-                                    echo '<h5><span class="badge text-white" style="background: #00b894;">Lunas</span></h5>';
+                                    echo '<h5><span class="badge text-white" style="background: #00b894;">Selesai</span></h5>';
                                 }else{
-                                    echo '<h5><span class="badge badge-danger">Belum Lunas</span></h5>';
+                                    echo '<h5><span class="badge badge-danger">Belum Selesai</span></h5>';
                                 }?>
                             </td>
+                          
                             <?php if (($this->session->userdata('role_id')) == 1): ?>
                             <td width="1">
                                 <span data-toggle="tooltip" data-placement="left" title="Detail">
