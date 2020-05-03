@@ -130,7 +130,7 @@ class Customer extends CI_Controller
     public function riwayatPemesanan()
     {
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Pemesanan';
+        $data['title'] = 'Riwayat Pemesanan';
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
         $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
@@ -160,7 +160,7 @@ class Customer extends CI_Controller
             $data['keyword'] = null;
         }
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/customer/riwayatPemesanan';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/customer/riwayatPemesanan';
         $config['total_rows']   = $this->m_pemesanan->totalRowsPaginationByUser($data['keyword'],$id_user);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);

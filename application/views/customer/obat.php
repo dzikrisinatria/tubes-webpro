@@ -47,7 +47,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<!-- <h4>Detail User</h4> -->
-                <img class="mx-auto mb-3 mt-2 bg-light" style="object-fit: cover; max-height: 200px;"
+                <img class="mx-auto mb-3 mt-2 bg-white" style="object-fit: cover; max-height: 200px;"
                     src="<?= base_url('assets/img/obat/') . $o['gambar']; ?>">
 				<h5><?//= $o['nama_obat'];?></h5>
 				<p><?//= $o['jenis_obat'];?></p>

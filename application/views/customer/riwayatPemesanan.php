@@ -1,7 +1,8 @@
 <div class="container-fluid pt-5 mt-5">
 	<!-- MULAI KONTEN DISINI -->
 
-        <?= $this->session->flashdata('message'); ?>
+    <?= $this->session->flashdata('message'); ?>
+    
     <div class="row col-11 mb-4 mx-auto justify-content-start">
         <div class="col-8">
             <h3>Riwayat Pemesanan</h3>

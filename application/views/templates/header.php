@@ -8,14 +8,16 @@
 
 	<!-- Bootstrap CSS-->
     <link href="<?= base_url('assets/');?>css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="<?= base_url('assets/');?>css/style.css" rel="stylesheet"> -->
     <link href="<?= base_url('assets/');?>css/style2.css" rel="stylesheet">
-	<link href="<?= base_url('assets/');?>fontawesome/css/all.min.css" rel="stylesheet">
-	<link href="<?= base_url('assets/');?>fontawesome/webfonts/all.min.css" rel="stylesheet">
 
-	<!-- Bootstrap core JavaScript-->
-	<script src="<?= base_url('assets/');?>js/jquery.js"></script>
-	<script src="<?= base_url('assets/');?>js/bootstrap.bundle.min.js"></script>
+	<!-- Fontawesome -->
+	<link href="<?= base_url('assets/');?>fontawesome/css/all.min.css" rel="stylesheet">
+
+	<!-- Datatables -->
+	<link href="<?= base_url('assets/');?>datatables/css/dataTables.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>datatables/css/buttons.bootstrap4.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>datatables/css/buttons.dataTables.min.css" rel="stylesheet">
 
 </head>
 

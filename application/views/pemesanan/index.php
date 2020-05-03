@@ -5,7 +5,7 @@
 
 		<?= $this->session->flashdata('message'); ?>
 
-		<div class="mt-4 row">
+		<!-- <div class="mt-4 row">
             <form action="<?= base_url('pemesanan'); ?>" method="post" class="col-4 justify-content-end">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Cari.." name="keyword" autocomplete="off" autofocus
@@ -16,26 +16,26 @@
                     </div>
                 </div>
             </form>
-		</div>
+		</div> -->
 
 		<div class="mt-4 table-responsive-lg">
 
-			<table class="table table-hover">
+			<table id="datatables" class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col"></th>
+						<th scope="col">No</th>
                         <th scope="col">Tanggal Pemesanan</th>
                         <th scope="col">Customer</th>
 						<th scope="col">Total</th>
 						<th scope="col">Metode Pembayaran</th>
                         <th scope="col">Nominal Bayar</th>
                         <th scope="col">Status</th>
-                        <th scope="col" colspan="2">Action</th>
+                        <th scope="col">Action</th>
 
 					</tr>
 				</thead>
 				<tbody>
-                    <?php if ( empty($pemesananPagination) ) :?>
+                    <?php if ( empty($allPemesanan) ) :?>
                         <tr>
                             <td colspan="6">
                                 <div class="alert alert-danger" role="alert">
@@ -44,10 +44,10 @@
                             </td>
                         </tr>
                     <?php endif; ?>
-                    <?php foreach ($pemesananPagination as $p ) :?>
+                    <?php $no=1; foreach ($allPemesanan as $p ) :?>
                     <tr>
                         <form action="">
-                            <td><?= ++$start ?></td>                            
+                            <td><?= $no++; ?></td>
                             <td><?= $p['tgl_pemesanan']?></td>
                             <td><?= $p['nama'] ?></td>
                             <td>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</td>
@@ -63,29 +63,39 @@
                             </td>
                           
                             <?php if (($this->session->userdata('role_id')) == 1): ?>
-                            <td width="1">
-                                <span data-toggle="tooltip" data-placement="left" title="Detail">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                                        data-target="#detail<?= $p['id_pemesanan']?>">
-                                        <i class="fas fa-fw fa-info"></i>
-                                    </button>
-                                </span>
-                            </td>
-                            <td width="1">
-                                <span data-toggle="tooltip" data-placement="left" title="Hapus">
-                                <a href="<?= base_url(); ?>pemesanan/hapusPemesanan/<?= $p['id_pemesanan']?>"
-                                    onClick="return confirm('Apakah Anda yakin ingin menghapus Pemesanan ini?')">
-                                <button type="button" class="btn btn-danger ml-1">
-                                    <i class="fas fa-fw fa-user-times"></i>
-                                </<button>
-                            </td>
+                                <td width="100">
+                                    <div class="row mx-auto justify-content-between">
+                                        <span data-toggle="tooltip" data-placement="left" title="Detail">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#detail<?= $p['id_pemesanan']?>">
+                                                <i class="fas fa-fw fa-info"></i>
+                                            </button>
+                                        </span>
+                                        <span data-toggle="tooltip" data-placement="left" title="Hapus">
+                                            <a href="<?= base_url(); ?>pemesanan/hapusPemesanan/<?= $p['id_pemesanan']?>"
+                                                onClick="return confirm('Apakah Anda yakin ingin menghapus Pemesanan ini?')">
+                                            <button type="button" class="btn btn-danger ml-1">
+                                                <i class="fas fa-fw fa-user-times"></i>
+                                            </<button>
+                                        </span>
+                                    </div>
+                                </td>
                             <?php else: ?>
-                                <td width="1">
-                                    <span data-toggle="tooltip" data-placement="left" title="Konfirmasi">
-                                    <a type="button" class="btn text-white ml-1" style="background: #00b894;"
-                                    href="<?= base_url(); ?>pemesanan/konfirmasiPemesanan/<?= $p['id_pemesanan']?>">
-                                    <i class="fas fa-fw fa-tasks fa-lg"></i>
-                                    </<button>
+                                <td>
+                                    <?php if ($p['status'] == 0) : ?>
+                                        <span data-toggle="tooltip" data-placement="left" title="Konfirmasi">
+                                            <a type="button" class="btn text-white" style="background: #00b894;"
+                                            href="<?= base_url(); ?>pemesanan/konfirmasiPemesanan/<?= $p['id_pemesanan']?>">
+                                            <i class="fas fa-fw fa-tasks fa-lg"></i>
+                                        </<button>
+                                    <?php else : ?>
+                                        <span data-toggle="tooltip" data-placement="left" title="Detail">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                data-target="#detail<?= $p['id_pemesanan']?>">
+                                                <i class="fas fa-fw fa-info"></i>
+                                            </button>
+                                        </span>
+                                    <?php endif; ?>
                                 </td>
                             <?php endif; ?>
                         </form>
@@ -93,7 +103,6 @@
                     <?php endforeach; ?>
 				</tbody>
 			</table>
-            <?= $this->pagination->create_links(); ?>
 
 		</div>
 
