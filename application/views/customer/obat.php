@@ -1,4 +1,4 @@
-<div class="container-fluid pt-5 mt-5">
+<div class="container-fluid pt-3 mt-4 mb-5">
     <!-- MULAI KONTEN DISINI -->
 
     <div class="row col-11 mb-4 mx-auto justify-content-start">

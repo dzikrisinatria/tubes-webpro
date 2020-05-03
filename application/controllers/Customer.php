@@ -32,6 +32,7 @@ class Customer extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar_customer', $data);
+        $this->load->view('templates/slider', $data);
         $this->load->view('customer/index', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -47,6 +48,21 @@ class Customer extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar_customer', $data);
         $this->load->view('customer/profile', $data);
+        $this->load->view('templates/footer', $data);
+    }
+
+    public function kontak()
+    {
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'Kontak';
+
+        $username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getProfile($username);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar_customer', $data);
+        $this->load->view('templates/slider', $data);
+        $this->load->view('customer/kontak', $data);
         $this->load->view('templates/footer', $data);
     }
 
@@ -109,6 +125,7 @@ class Customer extends CI_Controller
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar_customer', $data);
+        $this->load->view('templates/slider', $data);
         $this->load->view('customer/obat', $data);
         $this->load->view('templates/footer', $data);
     }

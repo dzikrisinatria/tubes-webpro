@@ -17,6 +17,7 @@
 <script src="<?= base_url('assets/');?>datatables/js/vfs_fonts.js"></script>
 
 <script>
+
 	// JAVASCRIPT UNTUK MODAL
 	$('#myModal').on('shown.bs.modal', function ()
     {
@@ -29,6 +30,14 @@
 	})
 
 	$(document).ready(function () {
+
+		<?php foreach ($pemesananPagination as $p) : ?>
+			$("#table<?= $p['id_pemesanan']; ?>").hide();
+			$("#toggle<?= $p['id_pemesanan']; ?>").click(function(){
+				$("#table<?= $p['id_pemesanan']; ?>").toggle();
+				$(this).text($(this).text() == 'Lihat Detail' ? 'Sembunyikan' : 'Lihat Detail'); 
+			});
+		<?php endforeach; ?>
 
 		//JAVASCRIPT UNTUK DATATABLES
 		$('#datatables').DataTable( {

@@ -1,5 +1,6 @@
-<div class="container-fluid pt-5 mt-5">
-    <!-- MULAI KONTEN DISINI -->
-	<h1>TEST</h1>
+<div class="container-fluid mt-4">
+	<!-- MULAI KONTEN DISINI -->
+
+	<center><h1>Obat Online</h1></center>
 	<!-- AKHIR KONTEN -->
 </div>

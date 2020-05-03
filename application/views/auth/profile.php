@@ -1,4 +1,4 @@
-<div class="col pt-5 mb-4">
+<div class="col pt-3 mb-4">
 	<div class="container mt-5">
 		<h2>Profile Saya</h2>
 		<!-- MULAI KONTEN DISINI -->
@@ -17,7 +17,7 @@
                             <h6 class="card-subtitle mb-2 text-muted"><?= $user['role']; ?></h6>
                             <div class="row mb-1 mt-3">
                                 <div class="col-4"><p class="card-text">Tanggal Lahir</p></div>
-                                <div class="col"><p class="card-text"><?= $user['tgl_lahir']; ?></p></div>
+                                <div class="col"><p class="card-text"><?= date("d F Y", strtotime($user['tgl_lahir'])); ?></p></div>
                             </div>
                             <div class="row mb-1">
                                 <div class="col-4"><p class="card-text">Alamat</p></div>
@@ -30,6 +30,11 @@
                             <div class="row mb-1">
                                 <div class="col-4"><p class="card-text">Email</p></div>
                                 <div class="col"><p class="card-text"><?= $user['email']; ?></p></div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <small class="card-subtitle text-muted">Terdaftar sejak <?= date('d F Y', $user['date_created']);?></small>
+                                </div>
                             </div>
                         </div>
                     </div>
