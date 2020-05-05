@@ -18,6 +18,17 @@ class M_obat extends CI_Model
         return $query->result_array();
     }
     
+    public function getObatCustomerPagination($limit, $start, $keyword = null)
+    {
+        if ($keyword){
+            $this->cariobat($keyword);
+        }
+        $this->db->where('status', '1');
+		$this->db->join('jenis_obat','jenis_obat.id_jenis_obat=obat.id_jenis_obat','LEFT OUTER');
+		$query = $this->db->get('obat', $limit, $start);
+        return $query->result_array();
+    }
+    
     public function getJenisObatPagination($limit, $start, $keyword = null)
     {
         if ($keyword){
@@ -90,6 +101,11 @@ class M_obat extends CI_Model
         return $this->db->delete('obat');
     }
 
+    public function hapusObatboongan()
+    {
+        return $data = ['status'       => 0];
+    }
+
      public function hapusJenisObat($id_jenis_obat)
     {
         $this->db->where('id_jenis_obat', $id_jenis_obat);
@@ -117,30 +133,32 @@ class M_obat extends CI_Model
     public function editdataobat($new_image)
     {
         return $data = [
-            'kode_obat'          => $this->input->post('kode_obat'),
+            'kode_obat'         => $this->input->post('kode_obat'),
             'nama_obat'         => $this->input->post('nama_obat'),
-            'harga'      => $this->input->post('harga'),
-            'stok' => $this->input->post('stok'),
-            'bentuk'     => $this->input->post('bentuk'),
-            'fungsi'        => $this->input->post('fungsi'),
-            'aturan'       => $this->input->post('aturan'),
-            'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('id_jenis_obat')
+            'harga'             => $this->input->post('harga'),
+            'stok'              => $this->input->post('stok'),
+            'bentuk'            => $this->input->post('bentuk'),
+            'fungsi'            => $this->input->post('fungsi'),
+            'aturan'            => $this->input->post('aturan'),
+            'gambar'            => $new_image,
+            'id_jenis_obat'     => $this->input->post('id_jenis_obat'),
+            'status'            => $this->input->post('status')
         ];
     }
 
     public function adddataobat($new_image)
     {
         $data = [
-            'kode_obat'          => $this->input->post('kode_obat'),
+            'kode_obat'         => $this->input->post('kode_obat'),
             'nama_obat'         => $this->input->post('nama_obat'),
-            'harga'      => $this->input->post('harga'),
-            'stok' => $this->input->post('stok'),
-            'bentuk'     => $this->input->post('bentuk'),
-            'fungsi'        => $this->input->post('fungsi'),
-            'aturan'       => $this->input->post('aturan'),
-            'gambar'          => $new_image,
-            'id_jenis_obat'       => $this->input->post('id_jenis_obat')
+            'harga'             => $this->input->post('harga'),
+            'stok'              => $this->input->post('stok'),
+            'bentuk'            => $this->input->post('bentuk'),
+            'fungsi'            => $this->input->post('fungsi'),
+            'aturan'            => $this->input->post('aturan'),
+            'gambar'            => $new_image,
+            'id_jenis_obat'     => $this->input->post('id_jenis_obat'),
+            'status'            => $this->input->post('status')
         ];
         $this->db->insert('obat', $data);
     }

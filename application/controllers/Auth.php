@@ -59,6 +59,10 @@ class Auth extends CI_Controller
                     redirect('apoteker');
                 } else if ( $user['role_id'] == 3 ){
                     redirect('customer');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger " role="alert">
+                    Akun Anda sudah tidak aktif!</div>');
+                    redirect('auth');
                 }
 
             } else{

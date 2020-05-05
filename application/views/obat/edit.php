@@ -110,6 +110,24 @@
 					</div>
 				</div>
 			</div>
+
+			<div class="form-group row">
+				<label for="status" class="col-sm-3 col-form-label">Status</label>
+				<div class="col-sm-9">
+					<select class="custom-select" name="status">
+						<?php if($getobat['status'] == 1) : ?>
+							<option value="<?= $getobat['status']; ?>" selected>Tersedia</option>
+						<?php else : ?>
+							<option value="<?= $getobat['status']; ?>">Tersedia</option>
+						<?php endif; ?>
+						<?php if($getobat['status'] == 0) : ?>
+							<option value="<?= $getobat['status']; ?>" selected>Tidak Tersedia</option>
+						<?php else : ?>
+							<option value="<?= $getobat['status']; ?>">Tidak Tersedia</option>
+						<?php endif; ?>
+					</select>
+				</div>
+			</div>
             <hr>
 			<div class="form-group row justify-content-end">
 				<a type="button" href="<?= base_url('obat/index'); ?>" class="btn btn-secondary form-control mt-2 col-sm-2 mx-1">Batal</a>

@@ -74,6 +74,15 @@
                                 </span>
                             </td>
                             <td width="1">
+                                <span data-toggle="tooltip" data-placement="left" title="Hapus Boongan">    
+                                    <a href="<?= base_url(); ?>admin/hapususerboongan/<?= $u['id_user']?>"
+                                        onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <button type="button" class="btn btn-danger ml-1">
+                                        <i class="fas fa-fw fa-user-times"></i>
+                                    </button>
+                                </span>
+							</td>
+                            <td width="1">
                                 <span data-toggle="tooltip" data-placement="left" title="Hapus">    
                                     <a href="<?= base_url(); ?>admin/hapususer/<?= $u['id_user']?>"
                                         onClick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
@@ -141,7 +150,7 @@
                         <h6>Tanggal Lahir</h6>
                     </div>
                     <div class="col-8">
-                        <p><?= $u['tgl_lahir'];?></p>
+                        <p><?= date("d F Y", strtotime($u['tgl_lahir']));?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">

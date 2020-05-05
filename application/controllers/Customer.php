@@ -121,7 +121,7 @@ class Customer extends CI_Controller
         
         $this->pagination->initialize($config);
         
-        $data['obatpagination'] = $this->m_obat->getObatPagination($config['per_page'], $data['start'], $data['keyword']);
+        $data['obatpagination'] = $this->m_obat->getObatCustomerPagination($config['per_page'], $data['start'], $data['keyword']);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar_customer', $data);

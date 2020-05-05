@@ -238,8 +238,8 @@ class Admin extends CI_Controller
                     redirect('admin/user');
                 }
             } else{
-                $new_image = 'default.jpg';
-                $data = $this->m_user->editdata($new_image);
+                $old_image = $data['getuser']['foto'];
+                $data = $this->m_user->editdata($old_image);
                 $this->m_user->updateUser($data, $id);
             }
             
@@ -252,6 +252,30 @@ class Admin extends CI_Controller
             </div>');
             redirect('admin/user');
         }
+    }
+
+    public function hapususerboongan($id)
+    {   
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'User';
+        $sess_username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getUser($sess_username);
+
+        $data['getuser'] = $this->m_user->getUserById($id);
+        $data['getrole'] = $this->m_user->getAllRole();
+        $data['alluser'] = $this->m_user->getAllUserAndRole();
+
+        $data = $this->m_user->hapusboongan($id);
+        $this->m_user->updateUser($data, $id);
+        
+        $this->session->set_flashdata('message', 
+        '<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Data User berhasil diupdate!
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>');
+        redirect('admin/user');
     }
 
     public function hapususer($id)

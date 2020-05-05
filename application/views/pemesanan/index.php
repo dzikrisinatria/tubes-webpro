@@ -180,7 +180,6 @@
                                 <th scope="col"></th>
                                 <th scope="col">Nama Obat</th>
                                 <th scope="col">Jumlah</th>
-                                <th scope="col">Harga</th>
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
@@ -196,12 +195,11 @@
                                     <th scope="row"><?= $no++; ?></th>
                                     <td><?= $items['nama_obat']; ?></td>
                                     <td><?= $items['jumlah']; ?></td>
-                                    <td align="right">Rp<?= number_format($items['harga'], 0,',','.'); ?>,-</td>
                                     <td align="right">Rp<?= number_format($items['subtotal'], 0,',','.'); ?>,-</td>
                                 </tr>
                                 <?php endforeach; ?>
                                 <tr>
-                                    <td align="right" colspan="4"><b>Total</b></td>
+                                    <td align="right" colspan="3"><b>Total</b></td>
                                     <td align="right"><b>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</b></td>
                                 </tr>
                             <?php endif; ?>
