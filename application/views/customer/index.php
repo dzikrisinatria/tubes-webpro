@@ -7,31 +7,50 @@
 
 	<div class="container mt-4">
 		<div class="row justify-content-between">	
-			<div class="card text-white bg-info mb-3" style="max-width: 21rem;">
+			<div class="card text-white bg-info mb-3 shadow-lg" style="max-width: 21rem; border: none;">
 				<!-- <div class="card-header">Header</div> -->
 				<div class="card-body">
-					<h5 class="card-title">Gratis Ongkir</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-						card's content.</p>
+					<div class="row">
+						<div class="col-4 my-auto">
+							<i class="fas fa-fw fa-shipping-fast fa-4x"></i>
+						</div>
+						<div class="col">
+							<h5 class="card-title">Gratis Ongkir</h5>
+							<p class="card-text">Tenang saja, semua pengiriman obat-obatan kami tanpa biaya ongkir!</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="card text-white bg-info mb-3" style="max-width: 21rem;">
+			<div class="card text-white bg-info mb-3 shadow-lg" style="max-width: 21rem; border: none;">
 				<!-- <div class="card-header">Header</div> -->
 				<div class="card-body">
-					<h5 class="card-title">Support 24 Jam</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-						card's content.</p>
+					<div class="row">
+						<div class="col-4 my-auto">
+							<i class="fas fa-fw fa-headset fa-4x"></i>
+						</div>
+						<div class="col">
+							<h5 class="card-title">Support 24 Jam</h5>
+							<p class="card-text">Apoteker kami akan selalu siap melayani Anda secara online 24 jam</p>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="card text-white bg-info mb-3" style="max-width: 21rem;">
+			<div class="card text-white bg-info mb-3 shadow-lg" style="max-width: 21rem; border: none;">
 				<!-- <div class="card-header">Header</div> -->
 				<div class="card-body">
-					<h5 class="card-title">Gratis Ongkir</h5>
-					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-						card's content.</p>
+					<div class="row">
+						<div class="col-4 my-auto">
+							<i class="fas fa-fw fa-handshake fa-4x"></i>
+						</div>
+						<div class="col">
+							<h5 class="card-title">Cash On Delivery</h5>
+							<p class="card-text">Sistem dapat dilakukan dengan Cash On Delivery untuk memudahkan Anda</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<!-- AKHIR KONTEN -->
 </div>
