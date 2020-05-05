@@ -1,4 +1,4 @@
-<div class="col pt-5 mb-4">
+<div class="col pt-3 mb-4">
 	<div class="container mt-5">
 		<h2>Tambah Obat</h2>
 		<!-- MULAI KONTEN DISINI -->
@@ -93,6 +93,24 @@
 						<label class="custom-file-label" for="foto">Pilih Gambar</label>
 						<?= $this->session->flashdata('message'); //pesan error khusus upload ?>
 					</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label for="status" class="col-sm-3 col-form-label">Status Obat</label>
+				<div class="col-sm-9">
+					<select class="custom-select" name="status">
+						<?php if( set_value('status') == 1 ) : ?>
+							<option value="1" selected>Tersedia</option>
+						<?php else : ?>
+							<option value="1">Tersedia</option>
+						<?php endif; ?>
+						<?php if( set_value('status') == 0 ) : ?>
+							<option value="0" selected>Tidak Tersedia</option>
+						<?php else : ?>
+							<option value="0">Tidak Tersedia</option>
+						<?php endif; ?>
+					</select>
 				</div>
 			</div>
             <hr>

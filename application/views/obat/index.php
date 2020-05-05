@@ -79,6 +79,15 @@
                                 </span>
                             </td>
                             <td width="1">
+                                <span data-toggle="tooltip" data-placement="left" title="Hapus Boongan">
+                                    <a href="<?= base_url(); ?>obat/hapusobatboongan/<?= $o['id_obat']?>"
+                                        onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
+                                    <button type="button" class="btn btn-danger ml-1">
+                                        <i class="fas fa-fw fa-trash-alt"></i>
+                                    </<button>
+                                </span>
+							</td>
+                            <td width="1">
                                 <span data-toggle="tooltip" data-placement="left" title="Hapus">
                                     <a href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_obat']?>"
                                         onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
@@ -111,7 +120,7 @@
 			</div> -->
 			<div class="modal-body my-auto">
                 <center>
-                <img class="mx-2 mb-3 mt-2 bg-light" height="150px"
+                <img class="mx-2 mb-3 mt-2 bg-white" height="150px"
                     src="<?= base_url('assets/img/obat/') . $o['gambar']; ?>">
 				<h5><?//= $o['nama_obat'];?></h5>
 				<p><?//= $o['jenis_obat'];?></p>
@@ -178,6 +187,18 @@
                     </div>
                     <div class="col-8">
                         <p><?= $o['aturan'];?></p>
+                    </div>
+                </div>
+                <div class="row mx-auto">
+                    <div class="col-4">
+                        <h6>Status</h6>
+                    </div>
+                    <div class="col-8">
+                        <?php if ($o['status'] == 1) :?>
+                            <p>Tersedia</p>
+                        <?php else : ?>
+                            <p>Tidak Tersedia</p>
+                        <?php endif; ?>
                     </div>
                 </div>
 			</div>

@@ -1,21 +1,6 @@
 </div>
 </div>
 
-<!-- Bootstrap JavaScript-->
-<script src="<?= base_url('assets/');?>js/jquery.js"></script>
-<script src="<?= base_url('assets/');?>js/bootstrap.bundle.min.js"></script>
-
-<!-- Datatables JavaSript -->
-<script src="<?= base_url('assets/');?>datatables/js/datatables.min.js"></script>
-<!-- <script src="<?= base_url('assets/');?>datatables/js/jquery.dataTables.min.js"></script> -->
-<script src="<?= base_url('assets/');?>datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/buttons.bootstrap4.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/buttons.html5.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/buttons.flash.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/pdfmake.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/jszip.min.js"></script>
-<script src="<?= base_url('assets/');?>datatables/js/vfs_fonts.js"></script>
-
 <script>
 
 	// JAVASCRIPT UNTUK MODAL

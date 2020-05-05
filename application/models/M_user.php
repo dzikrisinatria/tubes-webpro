@@ -97,6 +97,11 @@ class M_user extends CI_Model
         ];
     }
 
+    public function hapusboongan()
+    {
+        return $data = ['role_id'       => 0];
+    }
+
     public function adddata($new_image)
     {
         $data = [

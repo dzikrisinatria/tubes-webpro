@@ -69,7 +69,7 @@ class Pemesanan extends CI_Controller
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>');
-                    redirect('customer/obat');
+                    redirect('customer/riwayatPemesanan');
                 } else{
                     $this->session->set_flashdata('message', 
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">

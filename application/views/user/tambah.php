@@ -1,5 +1,5 @@
-<div class="col pt-5">
-	<div class="container mt-4">
+<div class="col pt-3">
+	<div class="container mt-5">
 		<h2>Tambah User</h2>
 		<!-- MULAI KONTEN DISINI -->
 

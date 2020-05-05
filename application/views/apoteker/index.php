@@ -4,7 +4,7 @@
 		<!-- MULAI KONTEN DISINI -->
 
 		<div class="row mt-4 ml-1 justify-content-start">
-			<div class="card text-white mb-3" style="background: #ff9f43; width: 15rem;" >
+			<div class="card text-white mb-3" style="background: #ff9f43; width: 15rem; border: none;" >
 				<div class="card-header h5">Total Pemesanan</div>
 				<div class="card-body row">
 					<div class="col">
@@ -17,7 +17,7 @@
                     card's content.</p> -->
 				</div>
 			</div>
-			<div class="card text-white bg-danger mb-3 ml-4" style="width: 15rem;" >
+			<div class="card text-white bg-danger mb-3 ml-4" style="width: 15rem; border: none;" >
 				<div class="card-header h5">Belum Dikonfirmasi</div>
 				<div class="card-body row">
 					<div class="col">
@@ -30,7 +30,7 @@
                     card's content.</p> -->
 				</div>
             </div>
-            <div class="card text-white mb-3 ml-4" style="background: #00b894;width: 15rem;" >
+            <div class="card text-white mb-3 ml-4" style="background: #00b894;width: 15rem; border: none;" >
 				<div class="card-header h5">Jumlah Obat</div>
 				<div class="card-body row">
 					<div class="col">

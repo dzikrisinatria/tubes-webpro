@@ -218,8 +218,8 @@ class Obat extends CI_Controller
                     redirect('obat/editobat/'.$id);
                 }
             } else{
-                $new_image = 'default.png';
-                $data = $this->m_obat->editdataobat($new_image);
+                $old_image = $data['getobat']['gambar'];
+                $data = $this->m_obat->editdataobat($old_image);
                 $this->m_obat->updateObat($data, $id);
             }
 
@@ -227,6 +227,27 @@ class Obat extends CI_Controller
             Data obat berhasil diubah!</div>');
             redirect('obat/index');
         }
+    }
+
+    public function hapusobatboongan($id)
+    {
+        // var_dump($id);die;
+        $data['appname'] = 'Obat Online App';
+        $data['title'] = 'Kelola Obat';
+        $sess_username = $this->session->userdata('username');
+        $data['user'] = $this->m_auth->getUser($sess_username);
+
+        $data['getobat'] = $this->m_obat->getObatById($id);
+        // var_dump($data['getobat']); die;
+        $data['getjenis'] = $this->m_obat->getAllJenis();
+        $data['allobat'] = $this->m_obat->getAllObatAndJenis();
+
+        $data = $this->m_obat->hapusObatboongan();
+        $this->m_obat->updateObat($data, $id);
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        Data obat berhasil dihapus boongan!</div>');
+        redirect('obat/index');
     }
 
     public function hapusobat($id)
