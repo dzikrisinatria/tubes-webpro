@@ -84,3 +84,13 @@
 
     <!-- AKHIR KONTEN -->
 </div>
+
+<script>
+    <?php foreach ($pemesananPagination as $p) : ?>
+        $("#table<?= $p['id_pemesanan']; ?>").hide();
+        $("#toggle<?= $p['id_pemesanan']; ?>").click(function(){
+            $("#table<?= $p['id_pemesanan']; ?>").toggle();
+            $(this).text($(this).text() == 'Lihat Detail' ? 'Sembunyikan' : 'Lihat Detail'); 
+        });
+    <?php endforeach; ?>
+</script>
