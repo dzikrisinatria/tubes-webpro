@@ -121,51 +121,51 @@ class Pemesanan extends CI_Controller
             
         }
         //cek keyword di dalam kolom pencarian
-        if ( $this->input->post('keyword') ){
-            //jika ada keyword masuk ke dalam data keyword
-            $data['keyword'] = $this->input->post('keyword');
-            //masukan data keyword ke dalam session agar dapat diakses di setiap page di pagination
-            $this->session->set_userdata('keyword', $data['keyword']);
-        } else {
-            $data['keyword'] = null;
-        }
+        // if ( $this->input->post('keyword') ){
+        //     //jika ada keyword masuk ke dalam data keyword
+        //     $data['keyword'] = $this->input->post('keyword');
+        //     //masukan data keyword ke dalam session agar dapat diakses di setiap page di pagination
+        //     $this->session->set_userdata('keyword', $data['keyword']);
+        // } else {
+        //     $data['keyword'] = null;
+        // }
         // PAGINATION
-        $config['base_url']     = 'http://localhost:8080/tubes-webpro/pemesanan/index';
-        $config['total_rows']   = $this->m_pemesanan->totalRowsPagination($data['keyword']);
-        $config['per_page']     = 6;
-        $data['start']          = $this->uri->segment(3);
+        // $config['base_url']     = 'http://localhost:8080/tubes-webpro/pemesanan/index';
+        // $config['total_rows']   = $this->m_pemesanan->totalRowsPagination($data['keyword']);
+        // $config['per_page']     = 6;
+        // $data['start']          = $this->uri->segment(3);
 
         //STYLING PAGINATION
-        $config['full_tag_open']    = '<nav><ul class="pagination pagination-sm justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav>';
+        // $config['full_tag_open']    = '<nav><ul class="pagination pagination-sm justify-content-center">';
+        // $config['full_tag_close']   = '</ul></nav>';
         
-        $config['first_link']       = 'First';
-        $config['first_tag_open']   = '<li class="page-item">';
-        $config['first_tag_close']  = '</li>';
+        // $config['first_link']       = 'First';
+        // $config['first_tag_open']   = '<li class="page-item">';
+        // $config['first_tag_close']  = '</li>';
         
-        $config['last_link']        = 'Last';
-        $config['last_tag_open']    = '<li class="page-item">';
-        $config['last_tag_close']   = '</li>';
+        // $config['last_link']        = 'Last';
+        // $config['last_tag_open']    = '<li class="page-item">';
+        // $config['last_tag_close']   = '</li>';
         
-        $config['next_link']        = '&raquo';
-        $config['next_tag_open']    = '<li class="page-item">';
-        $config['next_tag_close']   = '</li>';
+        // $config['next_link']        = '&raquo';
+        // $config['next_tag_open']    = '<li class="page-item">';
+        // $config['next_tag_close']   = '</li>';
         
-        $config['prev_link']        = '&laquo';
-        $config['prev_tag_open']    = '<li class="page-item">';
-        $config['prev_tag_close']   = '</li>';
+        // $config['prev_link']        = '&laquo';
+        // $config['prev_tag_open']    = '<li class="page-item">';
+        // $config['prev_tag_close']   = '</li>';
         
-        $config['cur_tag_open']     = '<li class="page-item"><a class="page-link bg-secondary text-light" href="#">';
-        $config['cur_tag_close']    = '</a></li>';
+        // $config['cur_tag_open']     = '<li class="page-item"><a class="page-link bg-secondary text-light" href="#">';
+        // $config['cur_tag_close']    = '</a></li>';
         
-        $config['num_tag_open']     = '<li class="page-item">';
-        $config['num_tag_close']    = '</li>';
+        // $config['num_tag_open']     = '<li class="page-item">';
+        // $config['num_tag_close']    = '</li>';
 
-        $config['attributes']       = array('class' => 'page-link text-dark');
+        // $config['attributes']       = array('class' => 'page-link text-dark');
         
-        $this->pagination->initialize($config);
+        // $this->pagination->initialize($config);
         
-        $data['pemesananPagination'] = $this->m_pemesanan->getPemesananPagination($config['per_page'], $data['start'], $data['keyword'], ($this->session->userdata('role_id')));
+        // $data['pemesananPagination'] = $this->m_pemesanan->getPemesananPagination($config['per_page'], $data['start'], $data['keyword'], ($this->session->userdata('role_id')));
        
 
         $this->load->view('templates/header', $data);

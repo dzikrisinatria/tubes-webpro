@@ -24,21 +24,23 @@
 				<a class="nav-link" href="<?= base_url('customer/obat'); ?>">Obat</a>
 			</li>
 
-			<?php if ($title == 'Profil') :?>
+			<?php if ($title == 'Kontak') :?>
 				<li class="nav-item active">
 			<?php else : ?>
 				<li class="nav-item">
 			<?php endif; ?>
-				<a class="nav-link" href="#">Profil</a>
+				<a class="nav-link" href="<?= base_url('customer/kontak'); ?>">Kontak</a>
 			</li>
-
-			<?php if ($title == 'Pemesanan') :?>
-				<li class="nav-item active">
-			<?php else : ?>
-				<li class="nav-item">
+			
+			<?php if ($this->session->has_userdata('username')) : ?>
+				<?php if ($title == 'Riwayat Pemesanan') :?>
+					<li class="nav-item active">
+				<?php else : ?>
+					<li class="nav-item">
+				<?php endif; ?>
+					<a class="nav-link" href="<?= base_url('customer/riwayatPemesanan'); ?>">Riwayat Pemesanan</a>
+				</li>
 			<?php endif; ?>
-				<a class="nav-link" href="<?= base_url('customer/riwayatPemesanan'); ?>">Riwayat Pemesanan</a>
-			</li>
 
 		</ul>
 		<ul class="navbar-nav navbar-right mt-2 mt-lg-0">
