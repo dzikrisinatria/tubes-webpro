@@ -48,8 +48,7 @@
                             </div>
                         </div>
                         <div clas="row">
-                            <table class="table table mx-auto" id="table<?= $p['id_pemesanan']; ?>" >
-                            <br>
+                            <table class="table table mt-2 mx-auto" id="table<?= $p['id_pemesanan']; ?>" >
                             <thead>
                             <tr>
                                 <th scope="col"></th>
