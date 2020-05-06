@@ -62,11 +62,11 @@ class M_user extends CI_Model
         return $this->db->get('user')->num_rows();
     }
     
-    public function hapusUser($id_user)
-    {
-        $this->db->where('id_user', $id_user);
-        return $this->db->delete('user');
-    }
+    // public function hapusUser($id_user)
+    // {
+    //     $this->db->where('id_user', $id_user);
+    //     return $this->db->delete('user');
+    // }
 
     public function cariuser($keyword)
     {
@@ -97,7 +97,7 @@ class M_user extends CI_Model
         ];
     }
 
-    public function hapusboongan()
+    public function hapususer()
     {
         return $data = ['role_id'       => 0];
     }

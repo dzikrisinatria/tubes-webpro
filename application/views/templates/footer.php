@@ -43,7 +43,7 @@
 			],
 			//DATATABLES UNTUK SORTING BERDASARKAN ANGKA
 			"columnDefs": [
-				{ "Type": "num-fmt", "targets" : [3, 5]}
+				{ "Type": "num", "targets" : [3, 5]}
 			]
 		});
 
