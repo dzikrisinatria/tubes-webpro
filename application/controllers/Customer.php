@@ -85,7 +85,7 @@ class Customer extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/customer/obat';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/customer/obat';
         $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
         $config['per_page']     = 4;
         $data['start']          = $this->uri->segment(3);
@@ -176,7 +176,7 @@ class Customer extends CI_Controller
             $data['keyword'] = null;
         }
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/customer/riwayatPemesanan';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/customer/riwayatPemesanan';
         $config['total_rows']   = $this->m_pemesanan->totalRowsPaginationByUser($data['keyword'],$id_user);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);

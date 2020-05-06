@@ -47,7 +47,7 @@ class Obat extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/obat/index';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/obat/index';
         $config['total_rows']   = $this->m_obat->totalRowsPagination($data['keyword']);
         $config['per_page']     = 6;
         $data['start']          = $this->uri->segment(3);
@@ -295,7 +295,7 @@ class Obat extends CI_Controller
         $data['allobat'] = $this->m_obat->getAllObatAndJenis();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost/tubes-webpro/obat/jenisobat';
+        $config['base_url']     = 'http://localhost:8080/tubes-webpro/obat/jenisobat';
         $config['total_rows']   = $this->m_obat->totalRowsJenisPagination($data['keyword']);
         $config['per_page']     = 5;
         $data['start']          = $this->uri->segment(3);

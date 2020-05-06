@@ -216,8 +216,10 @@ class Pemesanan extends CI_Controller
         }
 
         if ($this->input->post('nominal')){
+            $outstock=0;
             foreach ($data['Pemesanan']['itemPemesanan'] as $o){
                 if($o['stok'] < $o['jumlah']){
+                    $outstock=1;
                     $this->session->set_flashdata('message', 
                     '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                         Stok tidak cukup.
@@ -228,13 +230,15 @@ class Pemesanan extends CI_Controller
                     redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
                 }
             }
-            foreach ($data['Pemesanan']['itemPemesanan'] as $o){
-                $newStok = $o['stok'] - $o['jumlah'];
-                $this->m_obat->updateStokObat($o['id_obat'], $newStok);
-            }
 
             $nominal = $this->input->post('nominal');
             if ($this->input->post('nominal') >= $data['Pemesanan']['total']){
+                if($outstock==0){
+                    foreach ($data['Pemesanan']['itemPemesanan'] as $o){
+                    $newStok = $o['stok'] - $o['jumlah'];
+                    $this->m_obat->updateStokObat($o['id_obat'], $newStok);
+                    }
+                }
                 $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Pemesanan berhasil dikonfirmasi!</div>');
