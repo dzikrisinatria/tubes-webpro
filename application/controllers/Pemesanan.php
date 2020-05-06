@@ -215,7 +215,8 @@ class Pemesanan extends CI_Controller
             }
         }
 
-        if ($this->input->post('nominal')){
+        if ($this->input->post('nominal')>= $data['Pemesanan']['total']){
+            $outstock=0;
             foreach ($data['Pemesanan']['itemPemesanan'] as $o){
                 if($o['stok'] < $o['jumlah']){
                     $this->session->set_flashdata('message', 
@@ -226,20 +227,23 @@ class Pemesanan extends CI_Controller
                         </button>
                     </div>');
                     redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
+                }else{
+                    $outstock=1;
                 }
             }
+            if(outstock!=0){
             foreach ($data['Pemesanan']['itemPemesanan'] as $o){
                 $newStok = $o['stok'] - $o['jumlah'];
                 $this->m_obat->updateStokObat($o['id_obat'], $newStok);
             }
 
             $nominal = $this->input->post('nominal');
-            if ($this->input->post('nominal') >= $data['Pemesanan']['total']){
                 $this->m_pemesanan->updateKonfirmasiPemesanan($id, $nominal);
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Pemesanan berhasil dikonfirmasi!</div>');
                 redirect('pemesanan/index');
-            } else {
+            }
+        } else {
                 $this->session->set_flashdata('message', 
                 '<div class="alert alert-warning alert-dismissible fade show" role="alert">
                     Harap mengisi jumlah nominal yang dibayarkan dengan benar.
@@ -248,8 +252,7 @@ class Pemesanan extends CI_Controller
                     </button>
                 </div>');
                 redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
-            }    
-        }
+        }    
     
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_apoteker', $data);
