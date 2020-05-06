@@ -19,9 +19,9 @@
             </form>
         </div>
     </div>
-    <div class="row justify-content-start col-11 mx-auto">
+    <div class="row justify-content-center mx-auto">
         <?php foreach ($obatpagination as $obat) : ?>
-        <div class="card ml-3 mb-4" style="width: 18rem;">
+        <div class="card mx-3 mb-4 shadow-sm" style="width: 18rem; border: none;">
             <a href="" data-toggle="modal" data-target="#detail<?= $obat['id_obat']?>"><img src="<?= base_url('assets/img/obat/') . $obat['gambar']; ?>" style="padding:30px; object-fit: cover; height: 258px;" class="card-img-top"></a>
             <small class="text-center text-muted">Klik gambar untuk detail obat.</small>
             <div class="card-body text-center text-capitalize">
@@ -30,7 +30,11 @@
                 <h5><span class="text-info">Rp<?= number_format($obat['harga'], 0,',','.'); ?>,-</span></h5>
             </div>
             <div class="card-footer bg-white">
-                <a href="<?= base_url('customer/addtocart/').$obat['id_obat']; ?>" class="btn btn-info mr-1 w-100"><i class="fas fa-lg fa-cart-plus ml-n1 mr-1"></i> Tambah ke Keranjang</a>
+                <?php if ($obat['stok'] > 0) :?>
+                    <a href="<?= base_url('customer/addtocart/').$obat['id_obat']; ?>" class="btn btn-info mr-1 w-100"><i class="fas fa-lg fa-cart-plus ml-n1 mr-1"></i> Tambah ke Keranjang</a>
+                <?php else : ?>
+                    <a href="" class="btn btn-danger mr-1 w-100 disabled">Stok Habis</a>
+                <?php endif; ?>
             </div>
         </div>
         <?php endforeach; ?>
@@ -83,14 +87,6 @@
                     </div>
                     <div class="col-8">
                         <p>Rp<?= $o['harga'];?>,-</p>
-                    </div>
-                </div>
-                <div class="row mx-auto">
-                    <div class="col-4">
-                        <h6>Stok</h6>
-                    </div>
-                    <div class="col-8">
-                        <p><?= $o['stok'];?></p>
                     </div>
                 </div>
                 <div class="row mx-auto">

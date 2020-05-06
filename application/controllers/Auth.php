@@ -44,6 +44,11 @@ class Auth extends CI_Controller
         
         // jika usernya ada
         if ( $user ){
+            if ( $user['role_id'] == 0 ){
+                $this->session->set_flashdata('message', '<div class="alert alert-danger " role="alert">
+                Akun Anda sudah tidak aktif!</div>');
+                redirect('auth');
+            }
             // cek password
             if ( password_verify($password, $user['password']) ){
                 $data = [
@@ -59,10 +64,6 @@ class Auth extends CI_Controller
                     redirect('apoteker');
                 } else if ( $user['role_id'] == 3 ){
                     redirect('customer');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger " role="alert">
-                    Akun Anda sudah tidak aktif!</div>');
-                    redirect('auth');
                 }
 
             } else{
@@ -132,7 +133,7 @@ class Auth extends CI_Controller
                 if ($this->upload->do_upload('foto')){ //jika berhasil upload
                     //upload gambar yg baru
                     $new_image = $this->upload->data('file_name');
-                    $this->m_auth->regdata();
+                    $this->m_auth->regdata($new_image);
 
                 } else{
                     //menampilkan pesan error khusus upload

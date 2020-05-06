@@ -26,6 +26,8 @@ class Apoteker extends CI_Controller
 
         $data['jml_obat'] = $this->m_auth->getObatCount();
         $data['jml_pemesanan'] = $this->m_auth->getPemesananCount();
+        $data['jml_pemesanan_notconfirmed'] = $this->m_auth->getPemesananNotConfirmedCount();
+        $data['get_pemesanan_notconfirmed'] = $this->m_auth->getPemesananNotConfirmed();
         
         $sess_username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getUser($sess_username);

@@ -116,14 +116,14 @@
 				<div class="col-sm-9">
 					<select class="custom-select" name="status">
 						<?php if($getobat['status'] == 1) : ?>
-							<option value="<?= $getobat['status']; ?>" selected>Tersedia</option>
+							<option value="1" selected>Tersedia</option>
 						<?php else : ?>
-							<option value="<?= $getobat['status']; ?>">Tersedia</option>
+							<option value="1">Tersedia</option>
 						<?php endif; ?>
 						<?php if($getobat['status'] == 0) : ?>
-							<option value="<?= $getobat['status']; ?>" selected>Tidak Tersedia</option>
+							<option value="0" selected>Tidak Tersedia</option>
 						<?php else : ?>
-							<option value="<?= $getobat['status']; ?>">Tidak Tersedia</option>
+							<option value="0">Tidak Tersedia</option>
 						<?php endif; ?>
 					</select>
 				</div>

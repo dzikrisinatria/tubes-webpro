@@ -19,6 +19,7 @@
 
 		//JAVASCRIPT UNTUK DATATABLES
 		$('#datatables').DataTable( {
+			//DATATABLES UNTUK TOMBOL COPY EXCEL PDF
 			dom: 'Bfrtip',
 			buttons: [
 				{
@@ -39,6 +40,10 @@
 						columns: [ 0,1,2,3,4,5,6 ]
 					}
 				}
+			],
+			//DATATABLES UNTUK SORTING BERDASARKAN ANGKA
+			"columnDefs": [
+				{ "Type": "num-fmt", "targets" : [3, 5]}
 			]
 		});
 

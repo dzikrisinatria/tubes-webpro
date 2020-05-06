@@ -22,7 +22,7 @@
     </div>
     <?php foreach ($pemesananPagination as $p) : ?>
         <div class="row justify-content-start col-11 mx-auto">
-            <div class="card ml-3 mb-4" style="width: 50rem;">
+            <div class="card ml-3 mb-4 shadow-sm" style="width: 50rem; border: none;">
                 <h6 class="card-header"><?= date("D, d F Y", strtotime($p['tgl_pemesanan'])); ?></h6>
                 <div class="card-body">
                     <!-- <div class="container"> -->
@@ -64,7 +64,7 @@
                                     <th scope="row"><?= $no++; ?></th>
                                     <td><?= $items['nama_obat']; ?></td>
                                     <td><?= $items['jumlah']; ?></td>
-                                    <td align="right">Rp<?= number_format($items['harga'], 0,',','.'); ?>,-</td>
+                                    <td align="right">Rp<?= number_format($items['subtotal']/$items['jumlah'], 0,',','.'); ?>,-</td>
                                     <td align="right">Rp<?= number_format($items['subtotal'], 0,',','.'); ?>,-</td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -76,7 +76,17 @@
             </div>
            
         </div>
-
+        
+        <script>
+            $(document).ready(function () 
+            {
+                $("#table<?= $p['id_pemesanan']; ?>").hide();
+                $("#toggle<?= $p['id_pemesanan']; ?>").click(function(){
+                    $("#table<?= $p['id_pemesanan']; ?>").fadeToggle("slow");
+                    $(this).text($(this).text() == 'Lihat Detail' ? 'Sembunyikan' : 'Lihat Detail'); 
+                });
+            });
+        </script>
 
     <?php endforeach; ?>
 
@@ -84,14 +94,3 @@
 
     <!-- AKHIR KONTEN -->
 </div>
-
-<script>
-    $(document).ready(function () 
-	{
-        $("#table<?= $p['id_pemesanan']; ?>").hide();
-        $("#toggle<?= $p['id_pemesanan']; ?>").click(function(){
-            $("#table<?= $p['id_pemesanan']; ?>").toggle();
-            $(this).text($(this).text() == 'Lihat Detail' ? 'Sembunyikan' : 'Lihat Detail'); 
-        });
-    });
-</script>

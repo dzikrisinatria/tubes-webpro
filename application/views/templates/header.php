@@ -14,7 +14,7 @@
 	<link href="<?= base_url('assets/');?>fontawesome/css/all.min.css" rel="stylesheet">
 
 	<!-- Datatables -->
-	<link href="<?= base_url('assets/');?>datatables/css/dataTables.min.css" rel="stylesheet">
+	<link href="<?= base_url('assets/');?>datatables/css/datatables.min.css" rel="stylesheet">
 	<link href="<?= base_url('assets/');?>datatables/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 	<link href="<?= base_url('assets/');?>datatables/css/buttons.bootstrap4.min.css" rel="stylesheet">
 	<link href="<?= base_url('assets/');?>datatables/css/buttons.dataTables.min.css" rel="stylesheet">

@@ -44,7 +44,7 @@
 						</div>
 						<div class="col">
 							<h5 class="card-title">Cash On Delivery</h5>
-							<p class="card-text">Sistem dapat dilakukan dengan Cash On Delivery untuk memudahkan Anda</p>
+							<p class="card-text">Pembayaran dapat dilakukan lebih mudah dengan Cash On Delivery</p>
 						</div>
 					</div>
 				</div>
