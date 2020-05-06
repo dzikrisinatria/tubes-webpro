@@ -16,7 +16,7 @@
 				<a class="nav-link" href="<?= base_url(''); ?>">Home <span class="sr-only">(current)</span></a>
 			</li>
 
-			<?php if ($title == 'Obat') :?>
+			<?php if ($title == 'Daftar Obat') :?>
 				<li class="nav-item active">
 			<?php else : ?>
 				<li class="nav-item">
@@ -24,7 +24,7 @@
 				<a class="nav-link" href="<?= base_url('customer/obat'); ?>">Obat</a>
 			</li>
 
-			<?php if ($title == 'Kontak') :?>
+			<?php if ($title == 'Kontak Kami') :?>
 				<li class="nav-item active">
 			<?php else : ?>
 				<li class="nav-item">

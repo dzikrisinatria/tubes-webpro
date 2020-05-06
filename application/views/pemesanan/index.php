@@ -125,7 +125,7 @@
                         <h6>Tanggal Pemesanan</h6>
                     </div>
                     <div class="col-7">
-                        <?= $p['tgl_pemesanan'];?>
+                        <?= date("D, d F Y", strtotime($p['tgl_pemesanan']));?>
                     </div>
                 </div>
                 <div class="row mx-auto my-2">
@@ -162,6 +162,14 @@
                 </div>
                 <div class="row mx-auto my-2">
                     <div class="col">
+                        <h6>Nominal Kembalian</h6>
+                    </div>
+                    <div class="col-7">
+                        Rp<?= $p['bayar'] - $p['total'];?>,-
+                    </div>
+                </div>
+                <div class="row mx-auto my-2">
+                    <div class="col">
                         <h6>Status</h6>
                     </div>
                     <div class="col-7">
@@ -180,6 +188,7 @@
                                 <th scope="col"></th>
                                 <th scope="col">Nama Obat</th>
                                 <th scope="col">Jumlah</th>
+                                <th scope="col">Harga</th>
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
@@ -195,11 +204,12 @@
                                     <th scope="row"><?= $no++; ?></th>
                                     <td><?= $items['nama_obat']; ?></td>
                                     <td><?= $items['jumlah']; ?></td>
+                                    <td>Rp<?= number_format(($items['subtotal']/$items['jumlah']), 0,',','.'); ?>,-</td>
                                     <td align="right">Rp<?= number_format($items['subtotal'], 0,',','.'); ?>,-</td>
                                 </tr>
                                 <?php endforeach; ?>
                                 <tr>
-                                    <td align="right" colspan="3"><b>Total</b></td>
+                                    <td align="right" colspan="4"><b>Total</b></td>
                                     <td align="right"><b>Rp<?= number_format($p['total'], 0,',','.'); ?>,-</b></td>
                                 </tr>
                             <?php endif; ?>

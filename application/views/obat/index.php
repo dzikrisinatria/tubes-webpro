@@ -78,15 +78,17 @@
                                     </button>
                                 </span>
                             </td>
-                            <td width="1">
-                                <span data-toggle="tooltip" data-placement="left" title="Hapus Boongan">
-                                    <a href="<?= base_url(); ?>obat/hapusobatboongan/<?= $o['id_obat']?>"
-                                        onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
-                                    <button type="button" class="btn btn-danger ml-1">
-                                        <i class="fas fa-fw fa-trash-alt"></i>
-                                    </<button>
-                                </span>
-							</td>
+                            <?php if ($o['status'] == 1) : ?>
+                                <td width="1">
+                                    <span data-toggle="tooltip" data-placement="left" title="Hapus Boongan">
+                                        <a href="<?= base_url(); ?>obat/hapusobatboongan/<?= $o['id_obat']?>"
+                                            onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
+                                        <button type="button" class="btn btn-danger ml-1">
+                                            <i class="fas fa-fw fa-trash-alt"></i>
+                                        </<button>
+                                    </span>
+                                </td>
+                            <?php endif; ?>
                             <td width="1">
                                 <span data-toggle="tooltip" data-placement="left" title="Hapus">
                                     <a href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_obat']?>"

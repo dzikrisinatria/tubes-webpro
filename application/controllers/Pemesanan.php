@@ -201,6 +201,19 @@ class Pemesanan extends CI_Controller
 
         $data['Pemesanan'] = $this->m_pemesanan->getPemesananById($id);
         $data['Pemesanan']['itemPemesanan'] = $this->m_pemesanan->getDetailPemesanan($id);
+        $data['confirm'] = true;
+
+        // var_dump($data['Pemesanan']['itemPemesanan'][0]['status']);die;
+        
+        foreach ($data['Pemesanan']['itemPemesanan'] as $item){
+            if ($item['status'] == 0){
+                $this->session->set_flashdata('message', 
+                '<div class="alert alert-danger" role="alert">
+                    Obat <b>'.$item['nama_obat'].'</b> Tidak Tersedia, pemesanan tidak dapat dikonfirmasi.
+                </div>');
+                $data['confirm'] = false;
+            }
+        }
 
         if ($this->input->post('nominal')){
             foreach ($data['Pemesanan']['itemPemesanan'] as $o){

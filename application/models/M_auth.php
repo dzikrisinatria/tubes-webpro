@@ -10,12 +10,28 @@ class M_auth extends CI_Model
 
     public function getObatCount()
     {
-        return $this->db->count_all('obat');
+        $this->db->where('status', '1');
+        $this->db->from('obat');
+        return $this->db->count_all_results();
     }
     
     public function getPemesananCount()
     {
         return $this->db->count_all('pemesanan');
+    }
+    
+    public function getPemesananNotConfirmedCount()
+    {
+        $this->db->where('status', '0');
+        $this->db->from('pemesanan');
+        return $this->db->count_all_results();
+    }
+
+    public function getPemesananNotConfirmed()
+    {
+        $this->db->join('user','user.id_user = pemesanan.id_user','LEFT OUTER');
+        $this->db->where('status', '0');
+        return $this->db->get('pemesanan')->result_array();
     }
 
     public function regdata($new_image)

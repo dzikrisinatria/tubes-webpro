@@ -54,14 +54,13 @@ class Customer extends CI_Controller
     public function kontak()
     {
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Kontak';
+        $data['title'] = 'Kontak Kami';
 
         $username = $this->session->userdata('username');
         $data['user'] = $this->m_auth->getProfile($username);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar_customer', $data);
-        $this->load->view('templates/slider', $data);
         $this->load->view('customer/kontak', $data);
         $this->load->view('templates/footer', $data);
     }
@@ -69,7 +68,7 @@ class Customer extends CI_Controller
     public function obat()
     {
         $data['appname'] = 'Obat Online App';
-        $data['title'] = 'Obat';
+        $data['title'] = 'Daftar Obat';
         $data['user'] = $this->db->get_where('user',
         ['username' => $this->session->userdata('username')])->row_array();
 

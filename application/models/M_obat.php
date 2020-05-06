@@ -41,6 +41,7 @@ class M_obat extends CI_Model
     public function totalRowsPagination($keyword)
     {
         $this->cariobat($keyword);
+        $this->db->where('status', '1');
         $this->db->join('jenis_obat','jenis_obat.id_jenis_obat=obat.id_jenis_obat','LEFT OUTER');
         $this->db->from('obat');
         return $this->db->count_all_results();

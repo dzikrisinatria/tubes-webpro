@@ -21,7 +21,7 @@
 				<div class="card-header h5">Belum Dikonfirmasi</div>
 				<div class="card-body row">
 					<div class="col">
-						<h1 class="card-title"><?= $jml_pemesanan; ?></h1>
+						<h1 class="card-title"><?= $jml_pemesanan_notconfirmed; ?></h1>
 					</div>
 					<div class="col">
 						<i class="fas fa-fw fa-file-invoice-dollar fa-4x"></i>
@@ -41,6 +41,25 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
+	<div class="container mt-3">
+		<h2>Notifikasi</h2>
+		<!-- MULAI KONTEN DISINI -->
+
+		<div class="mt-4 ml-1 justify-content-start">
+			<?php foreach ($get_pemesanan_notconfirmed as $pnc) : ?>
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					Pesanan 
+					<a href="<?= base_url(); ?>pemesanan/konfirmasiPemesanan/<?= $pnc['id_pemesanan']?>" class="alert-link">
+						<?= $pnc['nama'].', '.date("d F Y", strtotime($pnc['tgl_pemesanan'])); ?>
+					</a> 
+					belum dikonfirmasi, harap segera konfirmasi.
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</div>
 
