@@ -40,7 +40,8 @@
 						<th scope="col">Nama Obat</th>
 						<th scope="col">Jenis</th>
 						<th scope="col">Harga</th>
-						<th scope="col" colspan="3">Action</th>
+						<th scope="col">Status</th>
+						<th scope="col" colspan="2">Action</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -61,6 +62,13 @@
 							<td><?= $o['nama_obat']?></td>
 							<td><?= $o['nama_jenis']?></td>
 							<td>Rp<?= $o['harga']?>,-</td>
+							<td>
+                                <?php if ($o['status'] == 1) : ?>
+                                    Tersedia
+                                <?php else : ?>
+                                    Tidak Tersedia
+                                <?php endif; ?>
+                            </td>
 
 							<td width="1">
                                 <span data-toggle="tooltip" data-placement="left" title="Detail">
@@ -80,8 +88,8 @@
                             </td>
                             <?php if ($o['status'] == 1) : ?>
                                 <td width="1">
-                                    <span data-toggle="tooltip" data-placement="left" title="Hapus Boongan">
-                                        <a href="<?= base_url(); ?>obat/hapusobatboongan/<?= $o['id_obat']?>"
+                                    <span data-toggle="tooltip" data-placement="left" title="Hapus">
+                                        <a href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_obat']?>"
                                             onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
                                         <button type="button" class="btn btn-danger ml-1">
                                             <i class="fas fa-fw fa-trash-alt"></i>
@@ -89,15 +97,6 @@
                                     </span>
                                 </td>
                             <?php endif; ?>
-                            <td width="1">
-                                <span data-toggle="tooltip" data-placement="left" title="Hapus">
-                                    <a href="<?= base_url(); ?>obat/hapusobat/<?= $o['id_obat']?>"
-                                        onClick="return confirm('Apakah Anda yakin ingin menghapus obat ini?')">
-                                    <button type="button" class="btn btn-danger ml-1">
-                                        <i class="fas fa-fw fa-trash-alt"></i>
-                                    </<button>
-                                </span>
-							</td>
 						</form>
 					</tr>
 					<?php endforeach; ?>

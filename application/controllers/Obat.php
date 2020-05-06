@@ -229,7 +229,7 @@ class Obat extends CI_Controller
         }
     }
 
-    public function hapusobatboongan($id)
+    public function hapusobat($id)
     {
         // var_dump($id);die;
         $data['appname'] = 'Obat Online App';
@@ -250,26 +250,26 @@ class Obat extends CI_Controller
         redirect('obat/index');
     }
 
-    public function hapusobat($id)
-    {
-        $data['getobat'] = $this->m_obat->getObatById($id);
-        $this->m_obat->hapusObat($id);
-        //mengecek gambar profil yg lama
-        $old_image = $data['getobat']['gambar'];
-        //cek apakah gambar default, apabila gambar default tidak akan dihapus
-        if ($old_image != 'default.png'){ 
-            //apabila gambar bukan default akan dihapus dengan unlink
-            unlink(FCPATH . 'assets/img/obat' . $old_image); 
-        }
-        $this->session->set_flashdata('message', 
-        '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Obat berhasil dihapus!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>');
-        redirect('obat/index');
-    }
+    // public function hapusobat($id)
+    // {
+    //     $data['getobat'] = $this->m_obat->getObatById($id);
+    //     $this->m_obat->hapusObat($id);
+    //     //mengecek gambar profil yg lama
+    //     $old_image = $data['getobat']['gambar'];
+    //     //cek apakah gambar default, apabila gambar default tidak akan dihapus
+    //     if ($old_image != 'default.png'){ 
+    //         //apabila gambar bukan default akan dihapus dengan unlink
+    //         unlink(FCPATH . 'assets/img/obat' . $old_image); 
+    //     }
+    //     $this->session->set_flashdata('message', 
+    //     '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    //         Data Obat berhasil dihapus!
+    //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //             <span aria-hidden="true">&times;</span>
+    //         </button>
+    //     </div>');
+    //     redirect('obat/index');
+    // }
 
     public function jenisobat()
     {

@@ -254,7 +254,7 @@ class Admin extends CI_Controller
         }
     }
 
-    public function hapususerboongan($id)
+    public function hapususer($id)
     {   
         $data['appname'] = 'Obat Online App';
         $data['title'] = 'User';
@@ -265,7 +265,7 @@ class Admin extends CI_Controller
         $data['getrole'] = $this->m_user->getAllRole();
         $data['alluser'] = $this->m_user->getAllUserAndRole();
 
-        $data = $this->m_user->hapusboongan($id);
+        $data = $this->m_user->hapususer();
         $this->m_user->updateUser($data, $id);
         
         $this->session->set_flashdata('message', 
@@ -278,24 +278,24 @@ class Admin extends CI_Controller
         redirect('admin/user');
     }
 
-    public function hapususer($id)
-    {
-        $data['getuser'] = $this->m_user->getUserById($id);
-        $this->m_user->hapusUser($id);
-        //mengecek gambar profil yg lama
-        $old_image = $data['getuser']['foto'];
-        //cek apakah gambar default, apabila gambar default tidak akan dihapus
-        if ($old_image != 'default.jpg'){ 
-            //apabila gambar bukan default akan dihapus dengan unlink
-            unlink(FCPATH . 'assets/img/profile' . $old_image); 
-        }
-        $this->session->set_flashdata('message', 
-        '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data User berhasil dihapus!
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>');
-        redirect('admin/user');
-    }
+    // public function hapususer($id)
+    // {
+    //     $data['getuser'] = $this->m_user->getUserById($id);
+    //     $this->m_user->hapusUser($id);
+    //     //mengecek gambar profil yg lama
+    //     $old_image = $data['getuser']['foto'];
+    //     //cek apakah gambar default, apabila gambar default tidak akan dihapus
+    //     if ($old_image != 'default.jpg'){ 
+    //         //apabila gambar bukan default akan dihapus dengan unlink
+    //         unlink(FCPATH . 'assets/img/profile' . $old_image); 
+    //     }
+    //     $this->session->set_flashdata('message', 
+    //     '<div class="alert alert-success alert-dismissible fade show" role="alert">
+    //         Data User berhasil dihapus!
+    //         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    //             <span aria-hidden="true">&times;</span>
+    //         </button>
+    //     </div>');
+    //     redirect('admin/user');
+    // }
 }
