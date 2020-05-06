@@ -63,7 +63,7 @@ class Admin extends CI_Controller
         $data['alluser'] = $this->m_user->getAllUserAndRole();
 
         // PAGINATION
-        $config['base_url']     = 'http://localhost:8080/tubes-webpro/admin/user';
+        $config['base_url']     = 'http://localhost/tubes-webpro/admin/user';
         $config['total_rows']   = $this->m_user->totalRowsPagination($data['keyword']);
         $config['per_page']     = 5;
         $data['start']          = $this->uri->segment(3);

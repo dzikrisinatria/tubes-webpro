@@ -250,7 +250,6 @@ class Pemesanan extends CI_Controller
                 redirect('pemesanan/konfirmasiPemesanan/'.$data['Pemesanan']['id_pemesanan']);
             }    
         }
-    
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar_apoteker', $data);
         $this->load->view('pemesanan/konfirmasiPemesanan', $data);
